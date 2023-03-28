@@ -1,7 +1,38 @@
 // eslint-disable-next-line import/no-cycle
-import { sampleRUM } from './lib-franklin.js';
+import {sampleRUM} from './lib-franklin.js';
 
 // Core Web Vitals RUM collection
 sampleRUM('cwv');
 
-// add more delayed functionality here
+// FixMe: workaround to set the fluid/responsiveness typography
+setTimeout(() => {
+    console.log("computing & setting the resolution automatically - calibration started");
+    checkAndSetTypography();
+}, 500);
+
+/**
+ * Temporary Workaround: Increase the fontSize of the page until Scroll Bar appears
+ * @returns {Promise<void>}
+ */
+async function checkAndSetTypography() {
+    const htmlElement = document.querySelector('html');
+    let fontSize = 73; // default fontSize for 1200x800 resolution
+    while (await isScrollbarHidden(htmlElement)) {
+        if (fontSize > 200) {
+            break;
+        }
+        fontSize = fontSize + 1;
+        htmlElement.style.fontSize = fontSize + '%';
+        window.dispatchEvent(new Event('resize'));
+        //await delayTimer(100); // add delay if needed on specific native platforms
+    }
+    htmlElement.style.opacity = '1';
+    htmlElement.querySelector('.beverages-menu').style.backgroundColor = '#601014';//background-color: #601014;
+    htmlElement.querySelector('.food-menu').style.backgroundColor = '#000'; // background-color: #000;
+}
+async function isScrollbarHidden(element) {
+    return element.offsetHeight < element.scrollHeight - 2; //threshhold = 2
+}
+function delayTimer(ms) {
+    return new Promise(res => setTimeout(res, ms));
+}

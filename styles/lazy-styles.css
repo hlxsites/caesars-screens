@@ -1,1 +1,276 @@
 /* below the fold CSS goes here */
+
+@import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800|Open+Sans:400,600,700|Oswald:600&display=swap");
+
+/* Josefin Sans Fonts */
+@font-face {
+    font-family: "Josefin Sans";
+    src: url("../styles/fonts/JosefinSans/JosefinSans-Bold.woff2") format("woff2"), url("../styles/fonts/JosefinSans/JosefinSans-Bold.woff") format("woff");
+    font-weight:700;
+    font-style:normal;
+    font-display: swap;
+}
+
+html {
+   /* font-size: calc(1vh * 1.5);*/
+   /* font-size: calc(10px + 16 * ((100vh - 600px) / (3000 - 600)));*/
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Beverages Menu */
+
+.beverages-menu {
+    /*background-color: #601014;*/
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: 7rem 1fr;
+    flex: 1;
+}
+
+.section.beverages-heading {
+    writing-mode: vertical-rl;
+    text-orientation: revert;
+    font-size: 5rem;
+    font-weight: lighter;
+    padding: 0;
+}
+
+.section.beverages-heading p {
+    margin: 0;
+    transform: scale(-1, -1);
+}
+
+.section.beverages-content {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr auto;
+    padding: 0;
+}
+
+.section.beverages-content .coffee-table  > div > div:first-of-type {
+    width: 60%;
+}
+
+.section.beverages-content .coffee-table  > div > div:nth-of-type(2) {
+    width: 20%;
+}
+
+.section.beverages-content .coffee-table  > div > div:nth-of-type(3) {
+    width: 20%;
+}
+
+.section.beverages-content > .beverages-content-coffee {
+    font-size: larger;
+    margin: 0;
+    align-self: start;
+}
+
+.section.beverages-content > .beverages-content-alcohol {
+    margin: 0;
+    align-self: start;
+}
+
+.section.beverages-content .coffee-table {
+   /* font-size: 110%;*/
+    margin-top: 2%;
+}
+
+.section.beverages-content .coffee-table > div h3 {
+    margin: 0;
+}
+
+.section.beverages-content .alcoholic-table {
+    border: solid;
+    margin-top: 2rem;
+    display: -webkit-flex;
+    -webkit-flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+.section.beverages-content h3 {
+    margin: 0;
+}
+
+.section.beverages-content .beverages-content-alcohol > .alcohol-beverages-table {
+    border: solid;
+    margin: 1%;
+    padding: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: unset;
+    align-self: end;
+}
+
+.section.beverages-content .beverages-content-alcohol > .alcohol-beverages-table > div:first-of-type {
+    width: 100%;
+}
+
+.section.beverages-content .beverages-content-alcohol > .alcohol-beverages-table > div:nth-of-type(2) {
+    width: 50%;
+}
+
+.section.beverages-content .beverages-content-alcohol > .alcohol-beverages-table > div:nth-of-type(3) {
+    width: 50%;
+}
+
+.section.beverages-content .beverages-content-alcohol > .alcohol-beverages-table > .wine-champagne-left-table .wine-table > div:nth-of-type(2) {
+    margin-left: 1em;
+}
+
+.section.beverages-content .beverages-content-alcohol > .alcohol-beverages-table > .wine-champagne-left-table .wine-table > div:nth-of-type(2)  > div:nth-of-type(2) {
+    text-align: center;
+}
+
+.section.beverages-content .beverages-content-alcohol > .alcohol-beverages-table > .wine-champagne-left-table .wine-table > div:nth-of-type(3)  {
+    margin-left: 1em;
+}
+
+.section.beverages-content .beverages-content-alcohol > .alcohol-beverages-table > .wine-champagne-left-table .wine-table > div:nth-of-type(3) > div:nth-of-type(2) {
+    text-align: center;
+}
+
+.section.beverages-content .beverages-content-alcohol > .alcohol-beverages-table > .wine-champagne-left-table .champagne-table > div:nth-of-type(2)  {
+    margin-left: 1em;
+}
+
+.section.beverages-content .beverages-content-alcohol > .alcohol-beverages-table > .wine-champagne-left-table .champagne-table > div:nth-of-type(2)  > div:nth-of-type(2) {
+    text-align: center;
+}
+
+.section.beverages-content .beverages-content-alcohol > .alcohol-beverages-table .beer-table > div:nth-of-type(2)  {
+    margin-left: 1em;
+}
+
+.section.beverages-content .beverages-content-alcohol > .alcohol-beverages-table .beer-table > div:nth-of-type(3)  {
+    margin-left: 1em;
+}
+
+.section.beverages-content .beverages-content-alcohol > .alcohol-beverages-table .beer-table > div:nth-of-type(4)  {
+    margin-left: 1em;
+}
+
+.section.beverages-content .beverages-content-alcohol > .alcohol-beverages-table .beer-table > div:nth-of-type(5)  {
+    margin-left: 1em;
+}
+
+
+/* Food Menu */
+
+.food-menu {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    /*background-color: #000;*/
+    grid-template-columns: 100%;
+    flex: 1;
+}
+
+
+.section.sweets, .section.brioche-savory, .section.sides  {
+    padding: 0;
+}
+
+.section.sweets  {
+    align-self: start;
+}
+
+.section.brioche-savory  {
+    align-self: center;
+}
+
+.section.sides  {
+    padding: 0;
+    align-self: end;
+    justify-content: center;
+}
+
+.section.sweets .sweets-table {
+    border: solid;
+    padding: 2%;
+    margin: 2%;
+}
+
+.section.brioche-savory .brioche-savory-table {
+    border: solid;
+    padding: 2%;
+    margin: 2%;
+}
+
+.section.sides .sides-table {
+    border: solid;
+    padding: 2%;
+    margin: 2%;
+    width: 95%;
+}
+
+.section.sides {
+    display: flex;
+    flex-direction: row;
+}
+
+.section.sides > div:first-of-type {
+    order: 1;
+    margin: 0;
+}
+
+.section.sides > div:nth-of-type(2)  {
+    margin: 0;
+    width: 80%;
+}
+
+.section.sides p {
+    writing-mode: vertical-rl;
+    text-orientation: revert;
+    transform: scale(-1, -1);
+    font-size: 5rem;
+    font-weight: lighter;
+    padding: 0;
+    margin: 2rem 0 0 0;
+}
+
+.section.sweets .sweets-table > div:nth-of-type(2)  {
+    margin-left: 1em;
+    word-spacing: 0.3em;
+}
+
+.section.sweets .sweets-table > div:nth-of-type(3)  {
+    margin-left: 1em;
+}
+
+.section.brioche-savory .brioche-savory-table > div:nth-of-type(2)  {
+    margin-left: 1em;
+    word-spacing: 0.3em;
+}
+
+.section.brioche-savory .brioche-savory-table > div:nth-of-type(4)  {
+    margin-left: 1em;
+}
+
+.section.brioche-savory .brioche-savory-table > div:nth-of-type(5)  {
+    margin-left: 1em;
+}
+
+.section.brioche-savory .brioche-savory-table > div:nth-of-type(6)  {
+    margin-left: 1em;
+}
+
+.section.brioche-savory .brioche-savory-table > div:nth-of-type(7)  {
+    margin-left: 2em;
+    word-spacing: 0.3em;
+}
+
+.section.sides .sides-table > div:nth-of-type(2)  {
+    margin-left: 1em;
+}
+
+.section.sides .sides-table > div:nth-of-type(3)  {
+    margin-left: 1em;
+}
+
+.section.sides .sides-table > div:nth-of-type(4)  {
+    margin-left: 1em;
+}
