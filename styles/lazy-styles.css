@@ -1,3 +1,5 @@
+/* stylelint-disable no-descending-specificity */
+
 /* below the fold CSS goes here */
 
 @import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800|Open+Sans:400,600,700|Oswald:600&display=swap");
@@ -12,8 +14,9 @@
 }
 
 html {
-   /* font-size: calc(1vh * 1.5);*/
-   /* font-size: calc(10px + 16 * ((100vh - 600px) / (3000 - 600)));*/
+   /* font-size: calc(1vh * 1.5); */
+
+   /* font-size: calc(10px + 16 * ((100vh - 600px) / (3000 - 600))); */
 }
 
 * {
@@ -25,7 +28,7 @@ html {
 /* Beverages Menu */
 
 .beverages-menu {
-    /*background-color: #601014;*/
+    /* background-color: #601014; */
     display: grid;
     grid-gap: 1rem;
     grid-template-columns: 7rem 1fr;
@@ -76,8 +79,12 @@ html {
 }
 
 .section.beverages-content .coffee-table {
-   /* font-size: 110%;*/
+   /* font-size: 110%; */
     margin-top: 2%;
+}
+
+.section.beverages-content h3 {
+    margin: 0;
 }
 
 .section.beverages-content .coffee-table > div h3 {
@@ -87,13 +94,9 @@ html {
 .section.beverages-content .alcoholic-table {
     border: solid;
     margin-top: 2rem;
-    display: -webkit-flex;
-    -webkit-flex-flow: row wrap;
+    display: flex;
+    flex-flow: row wrap;
     justify-content: flex-start;
-}
-
-.section.beverages-content h3 {
-    margin: 0;
 }
 
 .section.beverages-content .beverages-content-alcohol > .alcohol-beverages-table {
@@ -101,8 +104,7 @@ html {
     margin: 1%;
     padding: 2%;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: unset;
+    flex-flow: unset wrap;
     align-self: end;
 }
 
@@ -122,12 +124,12 @@ html {
     margin-left: 1em;
 }
 
-.section.beverages-content .beverages-content-alcohol > .alcohol-beverages-table > .wine-champagne-left-table .wine-table > div:nth-of-type(2)  > div:nth-of-type(2) {
-    text-align: center;
-}
-
 .section.beverages-content .beverages-content-alcohol > .alcohol-beverages-table > .wine-champagne-left-table .wine-table > div:nth-of-type(3)  {
     margin-left: 1em;
+}
+
+.section.beverages-content .beverages-content-alcohol > .alcohol-beverages-table > .wine-champagne-left-table .wine-table > div:nth-of-type(2)  > div:nth-of-type(2) {
+    text-align: center;
 }
 
 .section.beverages-content .beverages-content-alcohol > .alcohol-beverages-table > .wine-champagne-left-table .wine-table > div:nth-of-type(3) > div:nth-of-type(2) {
@@ -164,7 +166,8 @@ html {
 .food-menu {
     display: grid;
     grid-template-rows: auto auto auto;
-    /*background-color: #000;*/
+
+    /* background-color: #000; */
     grid-template-columns: 100%;
     flex: 1;
 }
@@ -186,6 +189,8 @@ html {
     padding: 0;
     align-self: end;
     justify-content: center;
+    display: flex;
+    flex-direction: row;
 }
 
 .section.sweets .sweets-table {
@@ -207,11 +212,6 @@ html {
     width: 95%;
 }
 
-.section.sides {
-    display: flex;
-    flex-direction: row;
-}
-
 .section.sides > div:first-of-type {
     order: 1;
     margin: 0;
@@ -229,7 +229,7 @@ html {
     font-size: 5rem;
     font-weight: lighter;
     padding: 0;
-    margin: 2rem 0 0 0;
+    margin: 2rem 0 0;
 }
 
 .section.sweets .sweets-table > div:nth-of-type(2)  {
