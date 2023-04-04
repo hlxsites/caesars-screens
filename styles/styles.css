@@ -262,19 +262,7 @@ main {
 
 html {
   font-size: 73%;
-  opacity: 0.1;
-  transition: opacity 5s;
-}
-
-@media (min-width: 1200px) and (min-height: 800px) {
-  main {
-    /*  width: 100vw;
-      height: 100vh; */
-  }
-
-  /* html {
-    overflow: hidden;
-  } */
+  background: linear-gradient(90deg, rgb(82 5 9 / 100%) 0%, rgb(0 0 0 / 100%) 100%);
 }
 
 @media (max-width: 1200px) {
@@ -287,4 +275,9 @@ html {
   main {
     flex-direction: column;
   }
+}
+
+.beverages-menu, .food-menu {
+  /* background-color: #601014; */
+  opacity: 0;
 }

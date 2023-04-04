@@ -1,6 +1,8 @@
 // eslint-disable-next-line import/no-cycle
 import { sampleRUM } from './lib-franklin.js';
 
+const MENU_CAFE_FONT_SIZE_CACHE_KEY = 'menu-cafe-fontSize';
+
 // Core Web Vitals RUM collection
 sampleRUM('cwv');
 
@@ -20,22 +22,31 @@ async function isScrollbarHidden(element) {
  */
 async function checkAndSetTypography() {
   const htmlElement = document.querySelector('html');
-  let fontSize = 73; // default fontSize for 1200x800 resolution
-  /* eslint-disable no-await-in-loop */
-  while (await isScrollbarHidden(htmlElement)) {
-    if (fontSize > 200) {
-      break;
+  const cachedFontSize = localStorage.getItem(MENU_CAFE_FONT_SIZE_CACHE_KEY);
+  if (cachedFontSize) {
+    htmlElement.style.fontSize = `${cachedFontSize}%`;
+  } else {
+    let fontSize = 73; // default fontSize for 1200x800 resolution
+    /* eslint-disable no-await-in-loop */
+    while (await isScrollbarHidden(htmlElement)) {
+      if (fontSize > 200) {
+        break;
+      }
+      fontSize += 1;
+      localStorage.setItem(MENU_CAFE_FONT_SIZE_CACHE_KEY, fontSize.toString());
+      htmlElement.style.fontSize = `${fontSize}%`;
+      window.dispatchEvent(new Event('resize'));
+      // await delayTimer(100); // add delay if needed on specific native platforms
     }
-    fontSize += 1;
-    htmlElement.style.fontSize = `${fontSize}%`;
-    window.dispatchEvent(new Event('resize'));
-    // await delayTimer(100); // add delay if needed on specific native platforms
   }
-  htmlElement.style.opacity = '1';
   htmlElement.querySelector('.beverages-menu').style.backgroundColor = '#601014'; // background-color: #601014;
   htmlElement.querySelector('.food-menu').style.backgroundColor = '#000'; // background-color: #000;
+
+  // unhide the elements
+  htmlElement.querySelector('.beverages-menu').style.opacity = '1';
+  htmlElement.querySelector('.food-menu').style.opacity = '1';
 }
 
 setTimeout(() => {
   checkAndSetTypography();
-}, 500);
+}, 1);
