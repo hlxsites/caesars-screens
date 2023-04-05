@@ -1,24 +1,24 @@
-const POS_ENDPOINT = "/screens/menus/pos-data.json";
+const POS_ENDPOINT = '/screens/menus/pos-data.json';
 
-export const startsWithTemplateLiteral = "{{";
-export const endsWithTemplateLiteral = "}}";
+export const startsWithTemplateLiteral = '{{';
+export const endsWithTemplateLiteral = '}}';
 
 export const placeholderMap = new Map();
 
 export function getKey(keyLabel) {
   if (
-    keyLabel.startsWith(startsWithTemplateLiteral) &&
-    keyLabel.endsWith(endsWithTemplateLiteral)
+    keyLabel.startsWith(startsWithTemplateLiteral)
+    && keyLabel.endsWith(endsWithTemplateLiteral)
   ) {
     return keyLabel;
   }
   if (
-    keyLabel.includes(startsWithTemplateLiteral) &&
-    keyLabel.includes(endsWithTemplateLiteral)
+    keyLabel.includes(startsWithTemplateLiteral)
+    && keyLabel.includes(endsWithTemplateLiteral)
   ) {
     return keyLabel.substring(
       keyLabel.indexOf(startsWithTemplateLiteral),
-      keyLabel.indexOf(endsWithTemplateLiteral) + 2
+      keyLabel.indexOf(endsWithTemplateLiteral) + 2,
     );
   }
   return keyLabel;
@@ -33,18 +33,18 @@ export function getKey(keyLabel) {
  */
 function updateMenuItem(SKU, targetElement, targetPrice, isOutOfStock) {
   if (
-    isOutOfStock.trim().toLowerCase() === "true" ||
-    isOutOfStock.trim().toLowerCase() === "yes"
+    isOutOfStock.trim().toLowerCase() === 'true'
+    || isOutOfStock.trim().toLowerCase() === 'yes'
   ) {
-    targetElement.parentElement.style.display = "none"; // already set
+    targetElement.parentElement.style.display = 'none'; // already set
     return;
   }
 
   targetElement.textContent = targetElement.textContent.replace(
     startsWithTemplateLiteral + SKU + endsWithTemplateLiteral,
-    targetPrice
+    targetPrice,
   );
-  targetElement.style.display = ""; //unhide the element after setting the price
+  targetElement.style.display = ''; // unhide the element after setting the price
 }
 
 function processBeveragesFoodMenuSections(menuJsonPayload) {
@@ -59,7 +59,7 @@ function processBeveragesFoodMenuSections(menuJsonPayload) {
         SKU,
         placeholderMap.get(`{{${SKU}}}`),
         variant1Price,
-        isOutOfStock
+        isOutOfStock,
       );
     }
     if (placeholderMap.has(`{{${SKU}}}:variant1-price`)) {
@@ -67,7 +67,7 @@ function processBeveragesFoodMenuSections(menuJsonPayload) {
         SKU,
         placeholderMap.get(`{{${SKU}}}:variant1-price`),
         variant1Price,
-        isOutOfStock
+        isOutOfStock,
       );
     }
     if (placeholderMap.has(`{{${SKU}}}:variant2-price`)) {
@@ -75,7 +75,7 @@ function processBeveragesFoodMenuSections(menuJsonPayload) {
         SKU,
         placeholderMap.get(`{{${SKU}}}:variant2-price`),
         variant2Price,
-        isOutOfStock
+        isOutOfStock,
       );
     }
   }
