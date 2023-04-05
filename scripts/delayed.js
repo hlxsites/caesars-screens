@@ -42,6 +42,7 @@ async function checkAndSetTypography() {
   htmlElement.querySelector('.beverages-menu').style.backgroundColor = '#601014'; // background-color: #601014;
   htmlElement.querySelector('.food-menu').style.backgroundColor = '#000'; // background-color: #000;
 
+  htmlElement.querySelector('.spinner').style.display = 'none';
   // unhide the main element once menu is ready
   htmlElement.querySelector('main').style.opacity = '1';
 }
