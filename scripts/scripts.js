@@ -11,27 +11,26 @@ import {
   loadCSS,
 } from './lib-franklin.js';
 
-import {
-  layout,
-  nestedTable,
-  hidePlaceholders,
-} from './menu-builder.js';
+import { layout, nestedTable } from './menu-builder.js';
 
-import {
-  populateValuesContent,
-} from './menu-content-parser.js';
-
-// Map to hold Elements having templates placeholders
-const placeholders = new Map();
+import { populateValuesContent } from './menu-content-parser.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 window.hlx.RUM_GENERATION = 'project-1'; // add your RUM generation information here
 
+/**
+ * Builds hero block and prepends to main in a new section.
+ * @param {Element} main The container element
+ */
 function buildHeroBlock(main) {
   const h1 = main.querySelector('h1');
   const picture = main.querySelector('picture');
-  // eslint-disable-next-line no-bitwise
-  if (h1 && picture && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
+  if (
+    h1
+    && picture
+    // eslint-disable-next-line no-bitwise
+    && h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING
+  ) {
     const section = document.createElement('div');
     section.append(buildBlock('hero', { elems: [picture, h1] }));
     main.prepend(section);
@@ -109,12 +108,11 @@ async function loadLazy(doc) {
   if (hash && element) element.scrollIntoView();
 
   await layout(doc);
-  await hidePlaceholders(doc, placeholders);
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   addFavIcon(`${window.hlx.codeBasePath}/styles/favicon.ico`);
 
-  await populateValuesContent(placeholders);
+  await populateValuesContent();
 
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));

@@ -117,36 +117,3 @@ export const nestedTable = async function createAlcoholBevarageNestedTable(
   alcoholBeverageNestedTableDiv.appendChild(wineChampagneNestedTableDiv);
   alcoholBeverageNestedTableDiv.appendChild(beerTable);
 };
-
-/**
- * This method will hide all the placeholders (i.e. variables) for initial rendering
- * @param rootDocument
- * @returns {Promise<void>}
- */
-export const hidePlaceholders = async function findAndHideTemplatePlaceholders(
-  rootDocument,
-  elementsMap,
-) {
-  const startsWithTemplateLiteral = '{{';
-  const endsWithTemplateLiteral = '}}';
-
-  // Find all the HTML elements whose text content matches the regular expression
-  const elements = document.getElementsByTagName('div');
-  for (let i = 0; i < elements.length; i += 1) {
-    const element = elements[i];
-    if (
-      !element.querySelector('div')
-      && element.textContent.includes(startsWithTemplateLiteral)
-      && element.textContent.includes(endsWithTemplateLiteral)
-    ) {
-      elementsMap.set(
-        `${element.textContent.substring(
-          element.textContent.indexOf(startsWithTemplateLiteral),
-          element.textContent.indexOf(endsWithTemplateLiteral) + 2,
-        )}${element.classList}`,
-        element,
-      );
-      element.style.display = 'none';
-    }
-  }
-};

@@ -258,6 +258,7 @@ main .section.highlight {
 
 main {
   display: flex;
+  opacity: 0;
 }
 
 html {
@@ -275,9 +276,4 @@ html {
   main {
     flex-direction: column;
   }
-}
-
-.beverages-menu, .food-menu {
-  /* background-color: #601014; */
-  opacity: 0;
 }

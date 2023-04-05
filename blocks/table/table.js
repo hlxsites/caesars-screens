@@ -1,12 +1,16 @@
-export const startsWithTemplateLiteral = '{{';
-export const endsWithTemplateLiteral = '}}';
+import {
+  getKey,
+  startsWithTemplateLiteral,
+  endsWithTemplateLiteral,
+  placeholderMap,
+} from '../../scripts/menu-content-parser.js';
 
 /**
  * Decorate Table HTML with specific class selectors so that,
  * it can be handled efficiently by the Menu Builder component
  * @param block
  */
-function instrumentMenuTable(block) {
+function instrumentSingleVariantTable(block) {
   if (!block.children) {
     return;
   }
@@ -14,26 +18,16 @@ function instrumentMenuTable(block) {
   const blockImmediateChildren = [...block.children];
 
   blockImmediateChildren.forEach((row) => {
-    if (
-      row.children.length > 0
-      && row.children[0].textContent.startsWith(startsWithTemplateLiteral)
-      && row.children[0].textContent.endsWith(endsWithTemplateLiteral)
-    ) {
-      row.children[0].classList.add('item-name');
-    } else if (
-      row.children.length > 0
-      && row.children[0].textContent.indexOf(startsWithTemplateLiteral) > 0
-      && row.children[0].textContent.indexOf(endsWithTemplateLiteral) > 0
-    ) {
-      row.children[0].classList.add('variant1-price');
-    }
-
-    if (row.children.length > 1) {
-      row.children[1].classList.add('variant1-price');
-    }
-
-    if (row.children.length > 2) {
-      row.children[2].classList.add('variant2-price');
+    const placeholdersDivs = [...row.querySelectorAll('div')].filter(
+      (div) => div.innerText.includes(startsWithTemplateLiteral)
+        && div.innerText.includes(endsWithTemplateLiteral),
+    );
+    for (let i = 0; i < placeholdersDivs.length; i += 1) {
+      placeholdersDivs[i].style.display = 'none';
+      placeholderMap.set(
+        getKey(placeholdersDivs[i].textContent),
+        placeholdersDivs[i],
+      );
     }
   });
 }
@@ -42,5 +36,5 @@ export default function decorate(block) {
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
 
-  instrumentMenuTable(block);
+  instrumentSingleVariantTable(block);
 }
