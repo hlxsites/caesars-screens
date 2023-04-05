@@ -9,7 +9,7 @@ sampleRUM('cwv');
 // FixMe: workaround to set the fluid/responsiveness typography
 
 async function isScrollbarHidden(element) {
-  return element.offsetHeight < element.scrollHeight - 2; // threshhold = 2
+  return element.offsetHeight < element.scrollHeight - 5; // threshhold = 5
 }
 
 /* function delayTimer(ms) {
@@ -43,6 +43,9 @@ async function checkAndSetTypography() {
   htmlElement.querySelector('.food-menu').style.backgroundColor = '#000'; // background-color: #000;
 
   htmlElement.querySelector('.spinner').style.display = 'none';
+
+  // remove the vertical scroll once menu is calibrated
+  htmlElement.style.overflow = 'hidden';
   // unhide the main element once menu is ready
   htmlElement.querySelector('main').style.opacity = '1';
 }
