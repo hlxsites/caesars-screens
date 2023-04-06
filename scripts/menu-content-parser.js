@@ -24,7 +24,6 @@ export function getKey(keyLabel) {
   return keyLabel;
 }
 
-/* eslint no-restricted-syntax: "error" */
 /**
  * This method will replace the placeholders (i.e.variables) with respective prices
  * and unhide the Menu item
@@ -48,49 +47,56 @@ function updateMenuItem(SKU, targetElement, targetPrice, isOutOfStock) {
 }
 
 function processBeveragesFoodMenuSections(menuJsonPayload) {
-  for (const {
-    SKU,
-    Variant1_price: variant1Price,
-    Variant2_price: variant2Price,
-    isOutOfStock,
-  } of menuJsonPayload.Beverages.data) {
-    if (placeholderMap.has(`{{${SKU}}}`)) {
+  // Access the "Beverages" category's data
+  const beveragesData = menuJsonPayload.Beverages.data;
+
+  // Loop through the Beverages Menu section data to access individual product details
+  beveragesData.forEach((menuItem) => {
+    const variant1Price = menuItem.Variant1_price;
+    const variant2Price = menuItem.Variant2_price;
+    const sku = menuItem.SKU;
+    const { isOutOfStock } = menuItem;
+    if (placeholderMap.has(`{{${sku}}}`)) {
       updateMenuItem(
-        SKU,
-        placeholderMap.get(`{{${SKU}}}`),
+        sku,
+        placeholderMap.get(`{{${sku}}}`),
         variant1Price,
         isOutOfStock,
       );
     }
-    if (placeholderMap.has(`{{${SKU}}}:variant1-price`)) {
+    if (placeholderMap.has(`{{${sku}}}:variant1-price`)) {
       updateMenuItem(
-        SKU,
-        placeholderMap.get(`{{${SKU}}}:variant1-price`),
+        sku,
+        placeholderMap.get(`{{${sku}}}:variant1-price`),
         variant1Price,
         isOutOfStock,
       );
     }
-    if (placeholderMap.has(`{{${SKU}}}:variant2-price`)) {
+    if (placeholderMap.has(`{{${sku}}}:variant2-price`)) {
       updateMenuItem(
-        SKU,
-        placeholderMap.get(`{{${SKU}}}:variant2-price`),
+        sku,
+        placeholderMap.get(`{{${sku}}}:variant2-price`),
         variant2Price,
         isOutOfStock,
       );
     }
-  }
+  });
 
-  for (const {
-    SKU,
-    Variant1_price: variant1Price,
-    isOutOfStock,
-  } of menuJsonPayload.Food.data) {
-    const targetElement = placeholderMap.get(`{{${SKU}}}`);
+  // Access the "Food" category's data
+  const foodData = menuJsonPayload.Food.data;
+
+  // Loop through the Food Menu Section data to access individual product details
+  foodData.forEach((product) => {
+    const variant1Price = product.Variant1_price;
+    const sku = product.SKU;
+    const { isOutOfStock } = product;
+
+    const targetElement = placeholderMap.get(`{{${sku}}}`);
 
     if (targetElement) {
-      updateMenuItem(SKU, targetElement, variant1Price, isOutOfStock);
+      updateMenuItem(sku, targetElement, variant1Price, isOutOfStock);
     }
-  }
+  });
 }
 
 /**
@@ -107,6 +113,6 @@ export async function populateValuesContent() {
     .catch((error) => {
       // Handle any errors that occurred during the HTTP request
       // eslint-disable-next-line no-console
-      console.warn(error);
+      console.warn(` Error in processing the menu item prices : ${error}`);
     });
 }
