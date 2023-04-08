@@ -10,60 +10,66 @@
  * governing permissions and limitations under the License.
  */
 
- :root {
+:root {
   /* colors */
   --link-color: #035fe6;
   --link-hover-color: #136ff6;
-  --background-color: #fff;
   --overlay-background-color: #eee;
   --highlight-background-color: #ccc;
-  --text-color: #000;
+  --text-color: #fff;
 
   /* fonts */
-  --body-font-family: 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
+  --body-font-family: 'Montserrat',sans-serif;
   --heading-font-family: var(--body-font-family);
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
 
-  /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 18px;
-  --body-font-size-xs: 16px;
+  /*   --body-font-size-m: 22px;
+     --body-font-size-s: 18px;
+     --body-font-size-xs: 16px; */
 
-  /* heading sizes */
-  --heading-font-size-xxl: 48px;
-  --heading-font-size-xl: 40px;
-  --heading-font-size-l: 32px;
-  --heading-font-size-m: 24px;
-  --heading-font-size-s: 20px;
-  --heading-font-size-xs: 18px;
+  /* body sizes  in relative units */
+  --body-font-size-m: 1.375rem;
+  --body-font-size-s: 1.125rem;
+  --body-font-size-xs: 1rem;
+
+  /* --heading-font-size-xxl: 48px;
+   --heading-font-size-xl: 40px;
+   --heading-font-size-l: 32px;
+   --heading-font-size-m: 24px;
+   --heading-font-size-s: 20px;
+   --heading-font-size-xs: 18px; */
+
+  /* heading sizes in relative units */
+  --heading-font-size-xxl: 3rem;
+  --heading-font-size-xl: 2.5rem;
+  --heading-font-size-l: 2rem;
+  --heading-font-size-m: 1.5rem;
+  --heading-font-size-s: 1.25rem;
+  --heading-font-size-xs: 1.125rem;
 
   /* nav height */
-  --nav-height: 64px;
+  --nav-height: 48px;
 
-}
-
-@media (min-width: 900px) {
-  :root {
-    --heading-font-size-xxl: 60px;
-    --heading-font-size-xl: 48px;
-    --heading-font-size-l: 36px;
-    --heading-font-size-m: 30px;
-    --heading-font-size-s: 24px;
-    --heading-font-size-xs: 22px;
-  }
 }
 
 body {
+  font-weight: lighter;
   font-size: var(--body-font-size-m);
   margin: 0;
   font-family: var(--body-font-family);
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--background-color);
+  position: relative;
+}
+
+body.appear {
+  display: unset;
 }
 
 header {
   height: var(--nav-height);
+  display: none;
 }
 
 h1, h2, h3,
@@ -88,11 +94,14 @@ p, dl, ol, ul, pre, blockquote {
   margin-bottom: 1em;
 }
 
-hr {
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
-  border: 0;
-  border-bottom: 1px solid var(--overlay-background-color);
+a:any-link {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--link-hover-color);
 }
 
 code, pre, samp {
@@ -108,25 +117,8 @@ pre {
   overflow: scroll;
 }
 
-main pre {
-  background-color: var(--overlay-background-color);
-  padding: 1em;
-  border-radius: .25em;
-  overflow-x: auto;
-  white-space: pre;
-}
-
-a:any-link {
-  color: var(--link-color);
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-  color: var(--link-hover-color);
-}
-
 /* buttons */
+
 a.button:any-link, button {
   font-family: var(--body-font-family);
   display: inline-block;
@@ -163,6 +155,7 @@ a.button.secondary, button.secondary {
   color: var(--text-color)
 }
 
+
 main input {
   font-size: 1.25rem;
   width: 100%;
@@ -179,6 +172,18 @@ main input {
 
 main input:hover {
   border: 1px solid var(--text-color);
+}
+
+main .section {
+  padding: 64px 16px;
+}
+
+main pre {
+  background-color: var(--overlay-background-color);
+  padding: 1em;
+  border-radius: .25em;
+  overflow-x: auto;
+  white-space: pre;
 }
 
 main blockquote {
@@ -198,25 +203,17 @@ main blockquote p::after {
   line-height: 0;
 }
 
+hr {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  border: 0;
+  border-bottom: 1px solid var(--overlay-background-color);
+}
+
 main img {
   max-width: 100%;
   width: auto;
   height: auto;
-}
-
-.icon {
-  display: inline-block;
-  height: 24px;
-  width: 24px;
-}
-
-.icon svg {
-  height: 100%;
-  width: 100%;
-}
-
-main .section {
-  padding: 64px 16px;
 }
 
 @media (min-width: 600px) {
@@ -226,13 +223,57 @@ main .section {
 }
 
 @media (min-width: 900px) {
+  :root {
+    /*    --heading-font-size-xxl: 60px;
+        --heading-font-size-xl: 48px;
+        --heading-font-size-l: 36px;
+        --heading-font-size-m: 30px;
+        --heading-font-size-s: 24px;
+        --heading-font-size-xs: 22px; */
+
+    /* heading sizes in relative units */
+    --heading-font-size-xxl: 3.75rem;
+    --heading-font-size-xl: 3rem;
+    --heading-font-size-l: 2.25rem;
+    --heading-font-size-m: 1.875rem;
+    --heading-font-size-s: 1.5rem;
+    --heading-font-size-xs: 1.375rem;
+  }
+
   .section > div {
     max-width: 1200px;
     margin: auto;
   }
 }
 
-/* section metadata */
+/* progressive section appearance */
+main .section[data-section-status='loading'],
+main .section[data-section-status='initialized'] {
+  display: none;
+}
+
 main .section.highlight {
   background-color: var(--highlight-background-color);
+}
+
+main {
+  display: flex;
+  opacity: 0;
+}
+
+html {
+  font-size: 73%;
+  background: linear-gradient(90deg, rgb(82 5 9 / 100%) 0%, rgb(0 0 0 / 100%) 100%);
+}
+
+@media (max-width: 1200px) {
+  main {
+    width: 1200px;
+  }
+}
+
+@media (orientation: portrait) or (max-width: 900px) {
+  main {
+    flex-direction: column;
+  }
 }

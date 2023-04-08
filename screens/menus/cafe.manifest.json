@@ -1,0 +1,59 @@
+{
+  "version": "3.0",
+  "contentDelivery": {
+    "providers": [
+      {
+        "name": "franklin",
+        "endpoint": "/"
+      }
+    ],
+    "defaultProvider": "franklin"
+  },
+  "timestamp": 1678826654000,
+  "entries": [
+    {
+      "path": "/screens/menus/cafe",
+      "timestamp": 1678826654000
+    },
+    {
+      "path": "/scripts/menu-builder.js",
+      "timestamp": 1593512456954
+    },
+    {
+      "path": "/scripts/menu-content-parser.js",
+      "timestamp": 1593512456954
+    },
+    {
+      "path": "/screens/menus/pos-data.json",
+      "timestamp": 1593512456954
+    },
+    {
+      "path": "/styles/styles.css",
+      "timestamp": 1593512456954
+    },
+    {
+      "path": "/scripts/lib-franklin.js",
+      "timestamp": 1593512456954
+    },
+    {
+      "path": "/scripts/scripts.js",
+      "timestamp": 1670317246247
+    },
+    {
+      "path": "/scripts/delayed.js",
+      "timestamp": 1671099599113
+    },
+    {
+      "path": "/styles/lazy-styles.css",
+      "timestamp": 1671099599113
+    },
+    {
+      "path": "/blocks/table/table.css",
+      "timestamp": 1671099599112
+    },
+    {
+      "path": "/blocks/table/table.js",
+      "timestamp": 1671099599112
+    }
+  ]
+}

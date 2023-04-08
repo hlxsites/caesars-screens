@@ -1,8 +1,6 @@
 import {
   sampleRUM,
   buildBlock,
-  loadHeader,
-  loadFooter,
   decorateButtons,
   decorateIcons,
   decorateSections,
@@ -12,6 +10,10 @@ import {
   loadBlocks,
   loadCSS,
 } from './lib-franklin.js';
+
+import { layout, nestedTable } from './menu-builder.js';
+
+import { populateValuesContent } from './menu-content-parser.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 window.hlx.RUM_GENERATION = 'project-1'; // add your RUM generation information here
@@ -23,8 +25,12 @@ window.hlx.RUM_GENERATION = 'project-1'; // add your RUM generation information 
 function buildHeroBlock(main) {
   const h1 = main.querySelector('h1');
   const picture = main.querySelector('picture');
-  // eslint-disable-next-line no-bitwise
-  if (h1 && picture && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
+  if (
+    h1
+    && picture
+    // eslint-disable-next-line no-bitwise
+    && h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING
+  ) {
     const section = document.createElement('div');
     section.append(buildBlock('hero', { elems: [picture, h1] }));
     main.prepend(section);
@@ -59,8 +65,7 @@ export function decorateMain(main) {
 }
 
 /**
- * Loads everything needed to get to LCP.
- * @param {Element} doc The container element
+ * loads everything needed to get to LCP.
  */
 async function loadEager(doc) {
   document.documentElement.lang = 'en';
@@ -90,10 +95,11 @@ export function addFavIcon(href) {
 }
 
 /**
- * Loads everything that doesn't need to be delayed.
- * @param {Element} doc The container element
+ * loads everything that doesn't need to be delayed.
  */
 async function loadLazy(doc) {
+  await nestedTable(doc);
+
   const main = doc.querySelector('main');
   await loadBlocks(main);
 
@@ -101,19 +107,21 @@ async function loadLazy(doc) {
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
 
-  loadHeader(doc.querySelector('header'));
-  loadFooter(doc.querySelector('footer'));
+  await layout(doc);
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
-  addFavIcon(`${window.hlx.codeBasePath}/styles/favicon.svg`);
+  addFavIcon(`${window.hlx.codeBasePath}/styles/favicon.ico`);
+
+  await populateValuesContent();
+
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
   sampleRUM.observe(main.querySelectorAll('picture > img'));
 }
 
 /**
- * Loads everything that happens a lot later,
- * without impacting the user experience.
+ * loads everything that happens a lot later, without impacting
+ * the user experience.
  */
 function loadDelayed() {
   // eslint-disable-next-line import/no-cycle

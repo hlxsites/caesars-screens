@@ -1,0 +1,25 @@
+.table > div {
+    display: flex;
+    flex-direction: row;
+}
+
+.table img {
+    width: 100%;
+}
+
+@media (min-width: 900px) {
+    .table > div {
+        display: flex;
+        align-items: center;
+        flex-direction: unset;
+    }
+
+    .table > div > div {
+        flex: 1;
+        margin-left: 32px;
+    }
+
+    .table > div > div:first-of-type {
+        margin-left: unset;
+    }
+}
