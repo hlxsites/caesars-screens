@@ -2,7 +2,7 @@ version: 1
 indices:
   channels:
     include:
-      - '/screens/caesars/**'
+      - '/screens/menus/**'
     target: '/screens/channels'
     properties:
       title:
