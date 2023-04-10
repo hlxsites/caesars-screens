@@ -16,19 +16,15 @@
       "timestamp": 1678826654000
     },
     {
+      "path": "/screens/menus/pos-data.json",
+      "timestamp": 1593512456954
+    },
+    {
       "path": "/scripts/menu-builder.js",
       "timestamp": 1593512456954
     },
     {
       "path": "/scripts/menu-content-parser.js",
-      "timestamp": 1593512456954
-    },
-    {
-      "path": "/screens/menus/pos-data.json",
-      "timestamp": 1593512456954
-    },
-    {
-      "path": "/styles/styles.css",
       "timestamp": 1593512456954
     },
     {
@@ -48,11 +44,31 @@
       "timestamp": 1671099599113
     },
     {
+      "path": "/styles/styles.css",
+      "timestamp": 1593512456954
+    },
+    {
       "path": "/blocks/table/table.css",
       "timestamp": 1671099599112
     },
     {
       "path": "/blocks/table/table.js",
+      "timestamp": 1671099599112
+    },
+    {
+      "path": "/blocks/spinner/spinner.css",
+      "timestamp": 1671099599112
+    },
+    {
+      "path": "/blocks/spinner/spinner.js",
+      "timestamp": 1671099599112
+    },
+    {
+      "path": "/blocks/multiple-variant-table/multiple-variant-table.css",
+      "timestamp": 1671099599112
+    },
+    {
+      "path": "/blocks/multiple-variant-table/multiple-variant-table.js",
       "timestamp": 1671099599112
     }
   ]
