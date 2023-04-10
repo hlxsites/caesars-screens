@@ -35,7 +35,7 @@ indices:
   channel-manifest:
     include:
       - '/screens/menus/**'
-    target: '/screens/internal/manifests'
+    target: '/screens/internal/manifest'
     properties:
       title:
         select: head > meta[property="og:title"]
