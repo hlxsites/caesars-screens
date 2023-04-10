@@ -182,9 +182,8 @@
 .section.sides  {
     padding: 0;
     align-self: end;
-    justify-content: center;
+    justify-content: space-between;
     display: flex;
-    flex-direction: row;
 }
 
 .section.sweets .sweets-table {
@@ -213,7 +212,7 @@
 
 .section.sides > div:nth-of-type(2)  {
     margin: 0;
-    width: 80%;
+    width: 100%;
 }
 
 .section.sides p {
