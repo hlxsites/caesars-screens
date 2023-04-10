@@ -9,7 +9,7 @@ sampleRUM('cwv');
 // FixMe: workaround to set the fluid/responsiveness typography
 
 async function isScrollbarHidden(element) {
-  return element.offsetHeight < element.scrollHeight - 5; // threshhold = 5
+  return element.offsetHeight < element.scrollHeight - 2; // threshhold = 2
 }
 
 /* function delayTimer(ms) {
