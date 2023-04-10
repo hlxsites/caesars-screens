@@ -1,0 +1,14 @@
+{
+  "channels": [
+    {
+      "manifestPath": "/screens/menus/cafe.manifest.json",
+      "lastModified": "2023-04-10T09:26:21.000Z",
+      "externalId": "/screens/menus/cafe",
+      "title": "Cafe Menu",
+      "liveUrl": "https://main--caesars-screens--hlxsites.hlx.live/screens/menus/cafe"
+    }
+  ],
+  "metadata": {
+    "providerType": "franklin"
+  }
+}
