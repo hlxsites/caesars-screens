@@ -1,6 +1,9 @@
 name: Generate Screens offline resources for franklin channels Manually
 
 on:
+  repository_dispatch:
+    types:
+      - resource-published
   workflow_dispatch:
 
 jobs:
