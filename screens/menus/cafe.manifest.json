@@ -9,11 +9,11 @@
     ],
     "defaultProvider": "franklin"
   },
-  "timestamp": 1681226777584,
+  "timestamp": 1681227157415,
   "entries": [
     {
       "path": "/screens/menus/cafe",
-      "timestamp": 1681226628000
+      "timestamp": 1681227002000
     },
     {
       "path": "/scripts/menu-builder.js",
