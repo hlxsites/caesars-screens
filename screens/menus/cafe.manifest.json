@@ -9,7 +9,7 @@
     ],
     "defaultProvider": "franklin"
   },
-  "timestamp": 1681296182269,
+  "timestamp": 1681296408159,
   "entries": [
     {
       "path": "/screens/menus/cafe",
@@ -37,7 +37,7 @@
     },
     {
       "path": "/screens/menus/pos-data.json",
-      "timestamp": 1681235997000
+      "timestamp": 1681296262000
     },
     {
       "path": "/scripts/delayed.js",
