@@ -3,13 +3,14 @@
 /* container */
 .spinner {
     position: absolute;
-    top: 10%;
+    top: 50%;
     right: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    transform: translate(50%, 0);
+    transform: translate(50%, -50%);
+    font-size: 4rem;
 }
 
 .spinner-letter {
