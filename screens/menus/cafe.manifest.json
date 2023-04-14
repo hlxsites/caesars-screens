@@ -9,39 +9,39 @@
     ],
     "defaultProvider": "franklin"
   },
-  "timestamp": 1681425703978,
+  "timestamp": 1681490504265,
   "entries": [
     {
       "path": "/screens/menus/cafe",
-      "timestamp": 1681424767000
+      "timestamp": 1681425711000
     },
     {
       "path": "/scripts/menu-builder.js",
-      "timestamp": 1681424763000
+      "timestamp": 1681425709000
     },
     {
       "path": "/scripts/menu-content-parser.js",
-      "timestamp": 1681424763000
+      "timestamp": 1681425709000
     },
     {
       "path": "/scripts/lib-franklin.js",
-      "timestamp": 1681424763000
+      "timestamp": 1681425709000
     },
     {
       "path": "/scripts/scripts.js",
-      "timestamp": 1681424763000
+      "timestamp": 1681425710000
     },
     {
       "path": "/styles/styles.css",
-      "timestamp": 1681424764000
+      "timestamp": 1681425710000
     },
     {
       "path": "/screens/menus/pos-data.json",
-      "timestamp": 1681425500000
+      "timestamp": 1681490177000
     },
     {
       "path": "/scripts/delayed.js",
-      "timestamp": 1681424763000
+      "timestamp": 1681425709000
     },
     {
       "path": "/blocks/columns/columns.css",
@@ -53,31 +53,31 @@
     },
     {
       "path": "/styles/lazy-styles.css",
-      "timestamp": 1681424764000
+      "timestamp": 1681425710000
     },
     {
       "path": "/blocks/table/table.css",
-      "timestamp": 1681424762000
+      "timestamp": 1681425709000
     },
     {
       "path": "/blocks/table/table.js",
-      "timestamp": 1681424762000
+      "timestamp": 1681425709000
     },
     {
       "path": "/blocks/multiple-variant-table/multiple-variant-table.css",
-      "timestamp": 1681424762000
+      "timestamp": 1681425709000
     },
     {
       "path": "/blocks/multiple-variant-table/multiple-variant-table.js",
-      "timestamp": 1681424762000
+      "timestamp": 1681425709000
     },
     {
       "path": "/blocks/spinner/spinner.css",
-      "timestamp": 1681424762000
+      "timestamp": 1681425709000
     },
     {
       "path": "/blocks/spinner/spinner.js",
-      "timestamp": 1681424762000
+      "timestamp": 1681425709000
     }
   ]
 }
