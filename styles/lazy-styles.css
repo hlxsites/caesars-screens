@@ -38,7 +38,7 @@
 }
 
 .section.beverages-heading p {
-    margin: 0;
+    margin: 0 0 1rem 0;
     transform: scale(-1, -1);
 }
 
@@ -73,7 +73,7 @@
 }
 
 .section.beverages-content .coffee-table {
-   /* font-size: 110%; */
+    /* font-size: 110%; */
     margin-top: 2%;
 }
 

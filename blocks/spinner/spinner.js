@@ -1,3 +1,5 @@
+import { isScreensPlayer } from '../../scripts/util.js';
+
 /**
  * Relocate Spinner HTML element at the body so that main
  * content can be hidden (opacity:0) until calibration is in process
@@ -25,6 +27,10 @@ function splitIntoChildren(block) {
 }
 
 export default function decorate(block) {
+  // spinner required only for screens players
+  if (!isScreensPlayer()) {
+    return;
+  }
   block.classList.add('spinner');
   splitIntoChildren(block);
 }

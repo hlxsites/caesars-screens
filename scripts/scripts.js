@@ -11,6 +11,8 @@ import {
   loadCSS,
 } from './lib-franklin.js';
 
+import { isScreensPlayer } from './util.js';
+
 import { layout, nestedTable } from './menu-builder.js';
 
 import { populateValuesContent } from './menu-content-parser.js';
@@ -119,20 +121,37 @@ async function loadLazy(doc) {
   sampleRUM.observe(main.querySelectorAll('picture > img'));
 }
 
+export function configureForWeb() {
+  const htmlElement = document.querySelector('html');
+  htmlElement.style.background = 'black';
+  htmlElement.querySelector('.beverages-menu').style.backgroundColor = '#601014';
+  htmlElement.querySelector('.food-menu').style.backgroundColor = '#000';
+  htmlElement.querySelector('.spinner-container').style.display = 'none';
+  // remove the vertical scroll once menu is calibrated
+  // htmlElement.style.overflow = 'hidden';
+  // unhide the main element once menu is ready
+  htmlElement.querySelector('main').style.opacity = '1';
+  htmlElement.style.background = 'black';
+  htmlElement.style.backgroundColor = '#000';
+}
+
 /**
  * loads everything that happens a lot later, without impacting
  * the user experience.
  */
 function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
-  window.setTimeout(() => import('./delayed.js'), 3000);
-  // load anything that can be postponed to the latest here
+  window.setTimeout(() => import('./delayed.js'), 0);
 }
 
 async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
-  loadDelayed();
+  if (isScreensPlayer()) {
+    loadDelayed();
+  } else {
+    configureForWeb();
+  }
 }
 
 loadPage();
