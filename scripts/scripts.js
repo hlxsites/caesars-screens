@@ -13,7 +13,7 @@ import {
 
 import { isScreensPlayer } from './util.js';
 
-import { calibrateMenuForWeb } from "./menu-calibrator.js";
+import { calibrateMenuForWeb } from './menu-calibrator.js';
 
 import { layout, nestedTable } from './menu-builder.js';
 

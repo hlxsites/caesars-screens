@@ -3,7 +3,7 @@
 /* container */
 .spinner {
     position: fixed;
-    top: 50%;
+    top: 48%;
     right: 48%;
     display: flex;
     justify-content: center;

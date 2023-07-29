@@ -5,5 +5,5 @@ export function isScreensPlayer() {
   return userAgent.includes('tizen')
       || userAgent.includes('electron')
       || userAgent.includes('cros')
-      || localStorage.getItem(PLAYER_DEBUG_MODE_ENABLED);
+      || localStorage.getItem(PLAYER_DEBUG_MODE_ENABLED) === 'true';
 }

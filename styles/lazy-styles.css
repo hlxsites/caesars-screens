@@ -38,7 +38,7 @@
 }
 
 .section.beverages-heading p {
-    margin: 0 0 1rem 0;
+    margin: 0 0 1rem;
     transform: scale(-1, -1);
 }
 
@@ -68,7 +68,7 @@
 }
 
 .section.beverages-content > .beverages-content-alcohol {
-    margin: 0;
+    margin-right: 1%;
     align-self: start;
 }
 

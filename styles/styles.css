@@ -72,6 +72,10 @@ header {
   display: none;
 }
 
+footer {
+  height: 1vh;
+}
+
 h1, h2, h3,
 h4, h5, h6 {
   font-family: var(--heading-font-family);
@@ -240,10 +244,6 @@ main img {
     --heading-font-size-xs: 1.375rem;
   }
 
-  .section > div {
-    /*  max-width: 1200px; */
-    margin: auto;
-  }
 }
 
 /* progressive section appearance */
@@ -263,7 +263,7 @@ main {
 
 html {
   font-size: 73%;
-  background: linear-gradient(90deg, rgb(82 5 9 / 100%) 0%, rgb(0 0 0 / 100%) 100%);
+  background: linear-gradient(90deg, rgb(88 24 23 / 100%) 0%, rgb(0 0 0 / 100%) 100%);
 }
 
 @media (orientation: portrait) or (max-width: 900px) {
