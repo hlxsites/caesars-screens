@@ -29,7 +29,7 @@ export async function calibrateMenuForPlayer(htmlElement) {
         if ((prevOffset !== -1 && currentOffset >= prevOffset && currentOffset < 50) || fontSize > 250) {
             fontSize -= 0.75;
             console.log('Optimal fontsize: ' + fontSize);
-            // localStorage.setItem(MENU_CAFE_FONT_SIZE_CACHE_KEY, fontSize.toString());
+            localStorage.setItem(MENU_CAFE_FONT_SIZE_CACHE_KEY, fontSize.toString());
             htmlElement.style.fontSize = `${fontSize}%`;
             window.dispatchEvent(new Event('resize'));
             break;
