@@ -266,12 +266,6 @@ html {
     background: linear-gradient(90deg, rgb(82 5 9 / 100%) 0%, rgb(0 0 0 / 100%) 100%);
 }
 
-/*@media (max-width: 1200px) {*/
-/*    main {*/
-/*        width: 1200px;*/
-/*    }*/
-/*}*/
-
 @media (orientation: portrait) or (max-width: 900px) {
     main {
         flex-direction: column;

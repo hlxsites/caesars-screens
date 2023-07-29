@@ -13,6 +13,8 @@ import {
 
 import { isScreensPlayer } from './util.js';
 
+import { calibrateMenuForWeb } from "./menu-calibrator.js";
+
 import { layout, nestedTable } from './menu-builder.js';
 
 import { populateValuesContent } from './menu-content-parser.js';
@@ -123,16 +125,14 @@ async function loadLazy(doc) {
 
 export function configureForWeb() {
   const htmlElement = document.querySelector('html');
-  htmlElement.style.background = 'black';
   htmlElement.querySelector('.beverages-menu').style.backgroundColor = '#601014';
   htmlElement.querySelector('.food-menu').style.backgroundColor = '#000';
   htmlElement.querySelector('.spinner-container').style.display = 'none';
-  // remove the vertical scroll once menu is calibrated
-  // htmlElement.style.overflow = 'hidden';
+  calibrateMenuForWeb();
+  window.addEventListener('resize', calibrateMenuForWeb);
+  htmlElement.style.backgroundColor = '#1e0000';
   // unhide the main element once menu is ready
   htmlElement.querySelector('main').style.opacity = '1';
-  htmlElement.style.background = 'black';
-  htmlElement.style.backgroundColor = '#000';
 }
 
 /**
