@@ -270,4 +270,8 @@ html {
   main {
     flex-direction: column;
   }
+
+  footer {
+    background: black;
+  }
 }

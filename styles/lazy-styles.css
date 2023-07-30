@@ -24,7 +24,7 @@
 .beverages-menu {
     /* background-color: #601014; */
     display: grid;
-    grid-gap: 0.25rem;
+    grid-gap: 0.2rem;
     grid-template-columns: 7rem 1fr;
     flex: 1;
 }
@@ -237,7 +237,7 @@
     font-size: 5rem;
     font-weight: lighter;
     padding: 0;
-    margin: 15% auto;
+    margin: 5% auto;
 }
 
 .section.sweets .sweets-table > div:nth-of-type(2)  {
@@ -310,5 +310,5 @@
 .section.sides.table-container {
   width: 100%;
   display: grid;
-  grid-template-columns: 9fr 1fr;
+  grid-template-columns: 1fr 8rem;
 }
