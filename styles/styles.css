@@ -270,8 +270,22 @@ html {
   main {
     flex-direction: column;
   }
+}
 
-  footer {
-    background: black;
+@media (orientation: portrait) and (min-height: 900px) {
+  html {
+    font-size: 60%;
+  }
+}
+
+@media (orientation: portrait) and (min-height: 1200px) {
+  html {
+    font-size: 80%;
+  }
+}
+
+@media (orientation: portrait) and (min-height: 1600px) {
+  html {
+    font-size: 95%;
   }
 }

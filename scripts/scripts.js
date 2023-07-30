@@ -128,7 +128,7 @@ export function configureForWeb() {
   htmlElement.querySelector('.beverages-menu').style.backgroundColor = '#601014';
   htmlElement.querySelector('.food-menu').style.backgroundColor = '#000';
   htmlElement.querySelector('.spinner-container').style.display = 'none';
-  calibrateMenuForWeb();
+  // calibrateMenuForWeb();
   // window.addEventListener('resize', calibrateMenuForWeb);
   htmlElement.style.backgroundColor = 'black';
   // unhide the main element once menu is ready
