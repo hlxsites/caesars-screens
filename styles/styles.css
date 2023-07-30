@@ -272,8 +272,98 @@ html {
   }
 }
 
-@media (orientation: portrait) {
+@media (orientation: portrait) and (max-height: 600px) {
+  html {
+    font-size: 40%;
+  }
+}
+
+@media (orientation: portrait) and (min-height: 600px) {
   html {
     font-size: 50%;
+  }
+}
+
+@media (orientation: portrait) and (min-height: 900px) {
+  html {
+    font-size: 72%;
+  }
+}
+
+@media (orientation: portrait) and (min-height: 1200px) {
+  html {
+    font-size: 92%;
+  }
+}
+
+@media (orientation: portrait) and (min-height: 1500px) {
+  html {
+    font-size: 100%;
+  }
+}
+
+@media (orientation: portrait) and (min-height: 1800px) {
+  html {
+    font-size: 115%;
+  }
+}
+
+@media (orientation: portrait) and (min-height: 2200px) {
+  html {
+    font-size: 135%;
+  }
+}
+
+@media (orientation: portrait) and (min-height: 3000px) {
+  html {
+    font-size: 185%;
+  }
+}
+
+@media (orientation: portrait) and (min-height: 3600px) {
+  html {
+    font-size: 225%;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 900px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 1200px) {
+  html {
+    font-size: 65%;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 1500px) {
+  html {
+    font-size: 80%;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 1800px) {
+  html {
+    font-size: 95%;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 2200px) {
+  html {
+    font-size: 115%;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 3000px) {
+  html {
+    font-size: 130%;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 3600px) {
+  html {
+    font-size: 198%;
   }
 }
