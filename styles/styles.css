@@ -274,7 +274,6 @@ html {
 
 @media (orientation: portrait) {
   html {
-    font-size: 20%;
-    background: #035fe6;
+    font-size: 50%;
   }
 }
