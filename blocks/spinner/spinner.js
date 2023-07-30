@@ -1,4 +1,4 @@
-import { isScreensPlayer } from '../../scripts/util.js';
+import isScreensPlayer from '../../scripts/util.js';
 
 /**
  * Relocate Spinner HTML element at the body so that main

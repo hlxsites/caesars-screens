@@ -11,7 +11,7 @@ import {
   loadCSS,
 } from './lib-franklin.js';
 
-import { isScreensPlayer } from './util.js';
+import isScreensPlayer from './util.js';
 
 import { calibrateMenuForWeb } from './menu-calibrator.js';
 

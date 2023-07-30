@@ -24,7 +24,7 @@
 .beverages-menu {
     /* background-color: #601014; */
     display: grid;
-    grid-gap: 1rem;
+    grid-gap: 0.25rem;
     grid-template-columns: 7rem 1fr;
     flex: 1;
 }
@@ -217,7 +217,7 @@
     border: solid;
     padding: 2%;
     margin: 2%;
-    width: 95%;
+    width: 97.5%;
 }
 
 .section.sides > div:first-of-type {
@@ -237,7 +237,7 @@
     font-size: 5rem;
     font-weight: lighter;
     padding: 0;
-    margin: 1rem 0 0;
+    margin: 15% auto;
 }
 
 .section.sweets .sweets-table > div:nth-of-type(2)  {
@@ -306,3 +306,11 @@
 .section.sides .sides-table > div:nth-of-type(4) > div:nth-of-type(4) {
     text-align: center;
 }
+
+.section.sides.table-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+}
+
+

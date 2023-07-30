@@ -1,6 +1,6 @@
 const PLAYER_DEBUG_MODE_ENABLED = 'player-debug-mode-enabled';
 
-export function isScreensPlayer() {
+export default function isScreensPlayer() {
   const userAgent = window.navigator.userAgent.toLowerCase();
   return userAgent.includes('tizen')
       || userAgent.includes('electron')
