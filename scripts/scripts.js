@@ -13,8 +13,6 @@ import {
 
 import isScreensPlayer from './util.js';
 
-import { calibrateMenuForWeb } from './menu-calibrator.js';
-
 import { layout, nestedTable } from './menu-builder.js';
 
 import { populateValuesContent } from './menu-content-parser.js';
@@ -128,14 +126,9 @@ export function configureForWeb() {
   htmlElement.querySelector('.beverages-menu').style.backgroundColor = '#601014';
   htmlElement.querySelector('.food-menu').style.backgroundColor = '#000';
   htmlElement.querySelector('.spinner-container').style.display = 'none';
-  // calibrateMenuForWeb();
-  // window.addEventListener('resize', calibrateMenuForWeb);
   htmlElement.style.backgroundColor = 'black';
   // unhide the main element once menu is ready
   htmlElement.querySelector('main').style.opacity = '1';
-  const elem = document.getElementsByTagName('h3');
-  elem[0].innerText = window.innerHeight;
-  elem[1].innerText = window.innerWidth;
 }
 
 /**
