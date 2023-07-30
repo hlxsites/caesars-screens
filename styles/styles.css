@@ -274,18 +274,18 @@ html {
 
 @media (orientation: portrait) and (min-height: 900px) {
   html {
-    font-size: 60%;
+    font-size: 40%;
   }
 }
 
 @media (orientation: portrait) and (min-height: 1200px) {
   html {
-    font-size: 80%;
+    font-size: 50%;
   }
 }
 
 @media (orientation: portrait) and (min-height: 1600px) {
   html {
-    font-size: 95%;
+    font-size: 75%;
   }
 }
