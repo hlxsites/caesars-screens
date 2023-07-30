@@ -133,6 +133,9 @@ export function configureForWeb() {
   htmlElement.style.backgroundColor = 'black';
   // unhide the main element once menu is ready
   htmlElement.querySelector('main').style.opacity = '1';
+  const elem = document.getElementsByTagName('h3');
+  elem[0].innerText = window.innerHeight;
+  elem[1].innerText = window.innerWidth;
 }
 
 /**
