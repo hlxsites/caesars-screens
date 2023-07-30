@@ -272,20 +272,20 @@ html {
   }
 }
 
-/*@media (orientation: portrait) and (min-height: 900px) {*/
-/*  html {*/
-/*    font-size: 30%;*/
-/*  }*/
-/*}*/
+@media (orientation: portrait) and (min-height: 900px) {
+  html {
+    font-size: 30%;
+  }
+}
 
-/*@media (orientation: portrait) and (min-height: 1200px) {*/
-/*  html {*/
-/*    font-size: 40%;*/
-/*  }*/
-/*}*/
+@media (orientation: portrait) and (min-height: 1200px) {
+  html {
+    font-size: 40%;
+  }
+}
 
-/*@media (orientation: portrait) and (min-height: 1600px) {*/
-/*  html {*/
-/*    font-size: 45%;*/
-/*  }*/
-/*}*/
+@media (orientation: portrait) and (min-height: 1600px) {
+  html {
+    font-size: 30%;
+  }
+}
