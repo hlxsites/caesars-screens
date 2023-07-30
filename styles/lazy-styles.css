@@ -38,7 +38,7 @@
 }
 
 .section.beverages-heading p {
-    margin: 0 0 1rem;
+    margin: 0 auto 1rem;
     transform: scale(-1, -1);
 }
 
