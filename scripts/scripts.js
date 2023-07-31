@@ -127,6 +127,7 @@ export function configureForWeb() {
   const htmlElement = document.querySelector('html');
   htmlElement.querySelector('.beverages-menu').style.backgroundColor = '#601014';
   htmlElement.querySelector('.food-menu').style.backgroundColor = '#000';
+  htmlElement.querySelector('.spinner-container').style.display = 'none';
   htmlElement.style.backgroundColor = 'black';
   window.setTimeout(() => {
     document.querySelector('main').style.opacity = '1';
