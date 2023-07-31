@@ -1,5 +1,7 @@
 const MENU_CAFE_FONT_SIZE_CACHE_KEY = 'menu-cafe-fontSize';
 
+let cssLoaded = false, posDataLoaded = false;
+
 /* eslint-disable no-promise-executor-return */
 function delayTimer(ms) {
   return new Promise((res) => setTimeout(res, ms));
@@ -35,4 +37,21 @@ export async function calibrateMenuForPlayer(htmlElement) {
     // eslint-disable-next-line no-await-in-loop
     await delayTimer(15); // add delay if needed on specific native platforms
   }
+}
+
+function showMenu() {
+  if (posDataLoaded && cssLoaded) {
+    document.querySelector('main').style.opacity = '1';
+    console.log('doc loaded');
+  }
+}
+
+export function updatePosDataLoaded() {
+  posDataLoaded = true;
+  showMenu();
+}
+
+export function updateCssLoaded() {
+  cssLoaded = true;
+  showMenu();
 }
