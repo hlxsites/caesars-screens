@@ -41,8 +41,7 @@ export async function calibrateMenuForPlayer(htmlElement) {
 
 function showMenu() {
   if (posDataLoaded && cssLoaded) {
-    document.querySelector('main').style.opacity = '1';
-    console.log('doc loaded');
+    document.getElementsByTagName('main')[0].style.opacity = '1';
   }
 }
 
