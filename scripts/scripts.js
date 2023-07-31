@@ -131,7 +131,7 @@ export function configureForWeb() {
   htmlElement.style.backgroundColor = 'black';
   window.setTimeout(() => {
     document.querySelector('main').style.opacity = '1';
-  }, 1000);
+  }, 1500);
 }
 
 /**
