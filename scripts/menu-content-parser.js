@@ -105,7 +105,7 @@ function processBeveragesFoodMenuSections(menuJsonPayload) {
  * @returns {Promise<void>}
  */
 export async function populateValuesContent() {
-  fetch(POS_ENDPOINT)
+  await fetch(POS_ENDPOINT)
     .then((response) => response.json())
     .then((menu) => {
       processBeveragesFoodMenuSections(menu);
