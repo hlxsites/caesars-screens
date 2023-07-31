@@ -1,3 +1,5 @@
+import isScreensPlayer from './util.js';
+
 const MENU_CAFE_FONT_SIZE_CACHE_KEY = 'menu-cafe-fontSize';
 
 let cssLoaded = false, posDataLoaded = false;
@@ -40,8 +42,10 @@ export async function calibrateMenuForPlayer(htmlElement) {
 }
 
 function showMenu() {
-  if (posDataLoaded && cssLoaded) {
-    document.getElementsByTagName('main')[0].style.opacity = '1';
+  if (posDataLoaded && cssLoaded && !isScreensPlayer()) {
+    delayTimer(50).then(() => {
+      document.getElementsByTagName('main')[0].style.opacity = '1';
+    });
   }
 }
 
