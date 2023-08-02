@@ -144,9 +144,9 @@ function isViewMenuPageRendering() {
 }
 
 function renderViewMenuPage() {
-  loadCSS(`${window.hlx.codeBasePath}/styles/button-styles.css`, () => {
-    document.querySelector('.view-menu-button').style.opacity = 1;
-  });
+  const link = document.querySelector('a');
+  link.href = 'https://issue-26--caesars-screens--hlxsites.hlx.live/screens/menus/cafe';
+  document.querySelector('main').style.opacity = 1;
 }
 
 function isMenuPageRendering() {
@@ -165,6 +165,8 @@ async function renderMenuPage() {
 }
 
 async function loadPage() {
+  document.querySelector('main').style.opacity = 0;
+  loadCSS(`${window.hlx.codeBasePath}/styles/button-styles.css`);
   await loadEager(document);
   await loadLazy(document);
   if (isMenuPageRendering()) {
