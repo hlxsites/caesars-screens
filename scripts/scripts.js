@@ -102,10 +102,10 @@ export function addFavIcon(href) {
  * loads everything that doesn't need to be delayed.
  */
 async function loadLazy(doc) {
-  await nestedTable(doc);
-
   const main = doc.querySelector('main');
   await loadBlocks(main);
+
+  await nestedTable(doc);
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
@@ -154,8 +154,6 @@ async function renderMenuPage() {
 }
 
 async function loadPage() {
-  document.querySelector('main').style.opacity = 0;
-  loadCSS(`${window.hlx.codeBasePath}/styles/button-styles.css`);
   await loadEager(document);
   await loadLazy(document);
   if (isMenuPageRendering()) {
