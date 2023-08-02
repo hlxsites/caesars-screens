@@ -41,9 +41,9 @@
 
 @media (orientation: landscape) {
   .section.view-menu-button {
-    margin-top: 5vh;
+    margin-top: 6vh;
     width: 45vh;
-    height: 11vh;
+    height: 10vh;
     background-color: rgb(85 34 35);
   }
 

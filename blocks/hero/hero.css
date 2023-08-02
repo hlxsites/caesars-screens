@@ -16,7 +16,7 @@ main .hero-container {
   padding: 0;
   width: 100vw;
   max-height: 38vh;
-  margin-top: 6vmin;
+  margin-top: 6vh;
 }
 
 main .hero-container div {
@@ -29,4 +29,11 @@ main .hero img {
   margin-right: auto;
   max-width: 38vw;
   max-height: 33vh;
+}
+
+@media (orientation: portrait) {
+  main .hero img {
+    max-width: 55vw;
+    max-height: 33vh;
+  }
 }

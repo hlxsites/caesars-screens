@@ -145,6 +145,7 @@ function loadDelayed() {
 }
 
 function renderViewMenuPage() {
+  document.querySelector('html').style.background = 'black';
   loadCSS(`${window.hlx.codeBasePath}/styles/button-styles.css`, () => {
     document.querySelector('main').style.opacity = 1;
   });
@@ -159,13 +160,13 @@ async function renderMenuPage() {
 }
 
 async function loadPage() {
+  if (isViewMenuPageRendering()) {
+    renderViewMenuPage();
+  }
   await loadEager(document);
   await loadLazy(document);
   if (isMenuPageRendering()) {
     await renderMenuPage();
-  } else if (isViewMenuPageRendering()) {
-    console.log('view page');
-    await renderViewMenuPage();
   }
 }
 
