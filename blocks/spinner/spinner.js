@@ -27,11 +27,6 @@ function splitIntoChildren(block) {
 }
 
 export default function decorate(block) {
-  // spinner required only for screens players
-  if (!isScreensPlayer()) {
-    document.getElementsByClassName('spinner-container')[0].style.display = 'none';
-    return;
-  }
   block.classList.add('spinner');
   splitIntoChildren(block);
 }

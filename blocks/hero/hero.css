@@ -15,8 +15,8 @@ main {
 main .hero-container {
   padding: 0;
   width: 100vw;
-  max-height: 35vh;
-  margin-top: 5vmin;
+  max-height: 38vh;
+  margin-top: 6vmin;
 }
 
 main .hero-container div {
@@ -27,6 +27,6 @@ main .hero img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  max-width: 35vw;
-  max-height: 30vh;
+  max-width: 38vw;
+  max-height: 33vh;
 }

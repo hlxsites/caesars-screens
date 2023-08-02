@@ -13,7 +13,7 @@ import {
 
 import { isScreensPlayer, isMenuPageRendering, isViewMenuPageRendering } from './util.js';
 
-import { updateCssLoaded } from './menu-calibrator.js';
+import { calibrateMenuForWeb, updateCssLoaded } from './menu-calibrator.js';
 
 import { layout, nestedTable } from './menu-builder.js';
 
@@ -122,14 +122,17 @@ async function loadLazy(doc) {
   sampleRUM.observe(main.querySelectorAll('picture > img'));
 }
 
-export function configureForWeb() {
+export async function configureForWeb() {
+  const startTime = new Date();
   const htmlElement = document.querySelector('html');
   htmlElement.querySelector('.beverages-menu').style.backgroundColor = '#601014';
   htmlElement.querySelector('.food-menu').style.backgroundColor = '#000';
   htmlElement.style.backgroundColor = 'black';
-  window.setTimeout(() => {
-    document.querySelector('main').style.opacity = '1';
-  }, 1000);
+  await calibrateMenuForWeb(htmlElement);
+  htmlElement.querySelector('.spinner').style.display = 'none';
+  document.querySelector('main').style.opacity = '1';
+  const endTime = new Date();
+  console.log(`Menu calibration time: ${endTime - startTime}ms`);
 }
 
 /**
@@ -142,14 +145,16 @@ function loadDelayed() {
 }
 
 function renderViewMenuPage() {
-  document.querySelector('main').style.opacity = 1;
+  loadCSS(`${window.hlx.codeBasePath}/styles/button-styles.css`, () => {
+    document.querySelector('main').style.opacity = 1;
+  });
 }
 
 async function renderMenuPage() {
   if (isScreensPlayer()) {
     loadDelayed();
   } else {
-    configureForWeb();
+    await configureForWeb();
   }
 }
 

@@ -10,7 +10,7 @@
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  margin-top: 3vmin;
+  margin-top: 7vmin;
   padding: 0;
   width: 45vmin;
   height: 11vmin;
@@ -27,7 +27,27 @@
 }
 
 @media (orientation: portrait) {
+  .section.view-menu-button {
+    margin-top: 5vw;
+    width: 30vw;
+    height: 8vw;
+    background-color: rgb(85 34 35);
+  }
+
   .section.view-menu-button a {
-    font-size: 7vw;
+    font-size: 5vw;
+  }
+}
+
+@media (orientation: landscape) {
+  .section.view-menu-button {
+    margin-top: 5vh;
+    width: 45vh;
+    height: 11vh;
+    background-color: rgb(85 34 35);
+  }
+
+  .section.view-menu-button a {
+    font-size: 7vh;
   }
 }
