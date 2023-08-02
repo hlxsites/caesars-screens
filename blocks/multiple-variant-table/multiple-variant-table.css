@@ -7,19 +7,18 @@
     width: 100%;
 }
 
-@media (min-width: 900px) {
-    .multiple-variant-table > div {
-        display: flex;
-        align-items: center;
-        flex-direction: unset;
-    }
-
-    .multiple-variant-table > div > div {
-        flex: 1;
-        margin-left: 32px;
-    }
-
-    .multiple-variant-table > div > div:first-of-type {
-        margin-left: unset;
-    }
+.multiple-variant-table > div {
+  display: flex;
+  align-items: center;
+  flex-direction: unset;
 }
+
+.multiple-variant-table > div > div {
+  flex: 1;
+  text-align: center;
+}
+
+.multiple-variant-table > div > div:first-of-type {
+  text-align: left;
+}
+
