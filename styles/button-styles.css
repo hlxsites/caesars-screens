@@ -1,41 +1,33 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@700&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@600&display=swap');
 
+.section.view-menu-button *, .section.view-menu-button a {
+  all: unset;
+}
+
 .section.view-menu-button {
-  position: absolute;
-  height: 25%;
-  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 3vmin;
   padding: 0;
-  margin: 0;
-}
-
-.section.view-menu-button .default-content-wrapper {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-}
-
-.section.view-menu-button .button-container{
-  position: absolute;
+  width: 45vmin;
+  height: 11vmin;
   background-color: rgb(85 34 35);
-  height: 43%;
-  width: 40%;
-  margin: 5% 32%;
-  padding: 0;
 }
 
 .section.view-menu-button a {
   display: block;
-  font-family: 'League Spartan',sans-serif;
-  font-size: 5vmin;
-  border: 0;
-  border-radius: 0;
-  color: white;
-  line-height: 100%;
-  text-align: center;
-  padding: 0;
-  background-color: unset;
-  margin: 3.5%;
+  margin: auto;
+  font-size: 7vmin;
+  white-space: nowrap;
+  font-family: "League Spartan", sans-serif;
+  cursor: pointer;
+}
+
+@media (orientation: portrait) {
+  .section.view-menu-button a {
+    font-size: 7vw;
+  }
 }
