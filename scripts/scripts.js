@@ -114,7 +114,6 @@ async function loadLazy(doc) {
   await layout(doc);
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`, updateCssLoaded);
-  addFavIcon(`${window.hlx.codeBasePath}/styles/favicon.ico`);
 
   await populateValuesContent();
 

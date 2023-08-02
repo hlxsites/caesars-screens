@@ -14,6 +14,11 @@ function getOffset(element) {
 }
 
 export async function calibrateMenuForPlayer(htmlElement) {
+  while (!cssLoaded || !posDataLoaded) {
+    // eslint-disable-next-line no-await-in-loop
+    await delayTimer(5);
+    console.log('CSS or POS data not loaded.');
+  }
   const cachedFontSize = localStorage.getItem(MENU_CAFE_FONT_SIZE_CACHE_KEY);
   if (cachedFontSize) {
     htmlElement.style.fontSize = `${cachedFontSize}%`;
