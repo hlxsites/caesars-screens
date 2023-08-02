@@ -13,8 +13,6 @@ import {
 
 import isScreensPlayer from './util.js';
 
-import { updateCssLoaded } from './menu-calibrator.js';
-
 import { layout, nestedTable } from './menu-builder.js';
 
 import { populateValuesContent } from './menu-content-parser.js';
@@ -113,7 +111,7 @@ async function loadLazy(doc) {
 
   await layout(doc);
 
-  loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`, updateCssLoaded);
+  loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   addFavIcon(`${window.hlx.codeBasePath}/styles/favicon.ico`);
 
   await populateValuesContent();
@@ -127,10 +125,10 @@ export function configureForWeb() {
   const htmlElement = document.querySelector('html');
   htmlElement.querySelector('.beverages-menu').style.backgroundColor = '#601014';
   htmlElement.querySelector('.food-menu').style.backgroundColor = '#000';
+  htmlElement.querySelector('.spinner-container').style.display = 'none';
   htmlElement.style.backgroundColor = 'black';
-  window.setTimeout(() => {
-    document.querySelector('main').style.opacity = '1';
-  }, 1500);
+  // unhide the main element once menu is ready
+  htmlElement.querySelector('main').style.opacity = '1';
 }
 
 /**

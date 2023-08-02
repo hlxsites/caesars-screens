@@ -1,5 +1,3 @@
-import { updatePosDataLoaded } from './menu-calibrator.js';
-
 const POS_ENDPOINT = '/screens/menus/pos-data.json';
 
 export const startsWithTemplateLiteral = '{{';
@@ -111,7 +109,6 @@ export async function populateValuesContent() {
     .then((response) => response.json())
     .then((menu) => {
       processBeveragesFoodMenuSections(menu);
-      updatePosDataLoaded();
     })
     .catch((error) => {
       // Handle any errors that occurred during the HTTP request
