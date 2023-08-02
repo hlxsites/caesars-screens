@@ -1,0 +1,46 @@
+/* block specific CSS goes here */
+
+html {
+  background: black;
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  display: block;
+  opacity: 1;
+  height: 100%;
+  width: 100%;
+}
+
+main .hero-container {
+  padding: 0;
+  height: 25%;
+  width: 100%;
+}
+
+main .hero-container div {
+  max-width: unset;
+  height: 100%;
+  width: 100%;
+}
+
+main .hero {
+  position: relative;
+}
+
+main .hero picture {
+  position: absolute;
+  z-index: -1;
+  top: 19%;
+  left: 32%;
+  bottom: 0;
+  right: 30%;
+  object-fit: cover;
+  box-sizing: border-box;
+}
+
+main .hero img {
+  width: 100%;
+  height: 100%;
+}

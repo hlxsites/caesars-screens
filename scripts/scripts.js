@@ -22,6 +22,9 @@ import { populateValuesContent } from './menu-content-parser.js';
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 window.hlx.RUM_GENERATION = 'project-1'; // add your RUM generation information here
 
+const CAFE_MENU = 'cafe menu';
+const VIEW_MENU = 'view menu';
+
 /**
  * Builds hero block and prepends to main in a new section.
  * @param {Element} main The container element
@@ -102,8 +105,6 @@ export function addFavIcon(href) {
  * loads everything that doesn't need to be delayed.
  */
 async function loadLazy(doc) {
-  await nestedTable(doc);
-
   const main = doc.querySelector('main');
   await loadBlocks(main);
 
@@ -111,12 +112,8 @@ async function loadLazy(doc) {
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
 
-  await layout(doc);
-
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`, updateCssLoaded);
   addFavIcon(`${window.hlx.codeBasePath}/styles/favicon.ico`);
-
-  await populateValuesContent();
 
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
@@ -130,7 +127,7 @@ export function configureForWeb() {
   htmlElement.style.backgroundColor = 'black';
   window.setTimeout(() => {
     document.querySelector('main').style.opacity = '1';
-  }, 1500);
+  }, 1000);
 }
 
 /**
@@ -142,13 +139,39 @@ function loadDelayed() {
   window.setTimeout(() => import('./delayed.js'), 0);
 }
 
-async function loadPage() {
-  await loadEager(document);
-  await loadLazy(document);
+function isViewMenuPageRendering() {
+  return document.title && document.title.toLowerCase() === VIEW_MENU;
+}
+
+function renderViewMenuPage() {
+  loadCSS(`${window.hlx.codeBasePath}/styles/button-styles.css`, () => {
+    document.querySelector('.view-menu-button').style.opacity = 1;
+  });
+}
+
+function isMenuPageRendering() {
+  return document.title && document.title.toLowerCase() === CAFE_MENU;
+}
+
+async function renderMenuPage() {
+  await nestedTable(document);
+  await layout(document);
+  await populateValuesContent();
   if (isScreensPlayer()) {
     loadDelayed();
   } else {
     configureForWeb();
+  }
+}
+
+async function loadPage() {
+  await loadEager(document);
+  await loadLazy(document);
+  if (isMenuPageRendering()) {
+    await renderMenuPage();
+  } else if (isViewMenuPageRendering()) {
+    console.log('view page');
+    await renderViewMenuPage();
   }
 }
 
