@@ -2,7 +2,7 @@
 
 /* container */
 .spinner {
-    position: absolute;
+    position: fixed;
     top: 48vh;
     right: 48vw;
     display: flex;

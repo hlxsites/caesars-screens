@@ -14,7 +14,7 @@ function getOffset(element) {
 }
 
 export async function calibrateMenuForPlayer(htmlElement) {
-  const cachedFontSize = null;//localStorage.getItem(MENU_CAFE_FONT_SIZE_CACHE_KEY);
+  const cachedFontSize = localStorage.getItem(MENU_CAFE_FONT_SIZE_CACHE_KEY);
   if (cachedFontSize) {
     htmlElement.style.fontSize = `${cachedFontSize}%`;
     return;
@@ -27,11 +27,12 @@ export async function calibrateMenuForPlayer(htmlElement) {
     htmlElement.style.fontSize = `${fontSize}%`;
     const currentOffset = getOffset(htmlElement);
     window.dispatchEvent(new Event('resize'));
+    console.log(currentOffset);
     // Keep increasing fontsize if the offset between window and html element is decreasing,
     // break the loop if it increases
     if (prevOffset !== -1 && currentOffset >= prevOffset && prevOffset < 50) {
       fontSize -= 0.75;
-      // localStorage.setItem(MENU_CAFE_FONT_SIZE_CACHE_KEY, fontSize.toString());
+      localStorage.setItem(MENU_CAFE_FONT_SIZE_CACHE_KEY, fontSize.toString());
       htmlElement.style.fontSize = `${fontSize}%`;
       window.dispatchEvent(new Event('resize'));
       break;
