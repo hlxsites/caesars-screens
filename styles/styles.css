@@ -274,55 +274,55 @@ html {
 
 @media (orientation: portrait) and (max-height: 600px) {
   html {
-    font-size: 40%;
+    font-size: 45%;
   }
 }
 
 @media (orientation: portrait) and (min-height: 600px) {
   html {
-    font-size: 50%;
+    font-size: 55%;
   }
 }
 
 @media (orientation: portrait) and (min-height: 900px) {
   html {
-    font-size: 72%;
+    font-size: 77%;
   }
 }
 
 @media (orientation: portrait) and (min-height: 1200px) {
   html {
-    font-size: 92%;
+    font-size: 97%;
   }
 }
 
 @media (orientation: portrait) and (min-height: 1500px) {
   html {
-    font-size: 100%;
+    font-size: 105%;
   }
 }
 
 @media (orientation: portrait) and (min-height: 1800px) {
   html {
-    font-size: 115%;
+    font-size: 120%;
   }
 }
 
 @media (orientation: portrait) and (min-height: 2200px) {
   html {
-    font-size: 135%;
+    font-size: 140%;
   }
 }
 
 @media (orientation: portrait) and (min-height: 3000px) {
   html {
-    font-size: 185%;
+    font-size: 190%;
   }
 }
 
 @media (orientation: portrait) and (min-height: 3600px) {
   html {
-    font-size: 225%;
+    font-size: 230%;
   }
 }
 
