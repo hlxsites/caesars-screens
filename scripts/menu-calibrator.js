@@ -20,7 +20,7 @@ export async function calibrateMenu(htmlElement, fontsizeFactor, delayTime = 0) 
     htmlElement.style.fontSize = `${cachedFontSize}%`;
     return;
   }
-  let fontSize = 30; // optimal initial fontsize(fits 360 * 640)
+  let fontSize = 20; // optimal initial fontsize(fits 360 * 640)
   let prevOffset = -1;
   // 198% fontsize works fine for a 4k display so 250% limit should be fine
   while (fontSize < 250) {
@@ -59,7 +59,7 @@ export async function calibrateMenuForWeb(htmlElement) {
     await delayTimer(5);
   }
   // calibration required for landscape only since scrolling is expected in portrait
-  if (window.innerWidth / window.innerHeight <= 1) {
+  if (window.innerWidth / window.innerHeight <= 1 || window.innerWidth <= 900) {
     return;
   }
   await calibrateMenu(htmlElement, 3);

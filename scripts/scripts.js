@@ -102,6 +102,7 @@ export function addFavIcon(href) {
  * loads everything that doesn't need to be delayed.
  */
 async function loadLazy(doc) {
+  loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`, updateCssLoaded);
   const main = doc.querySelector('main');
   await loadBlocks(main);
 
@@ -112,8 +113,6 @@ async function loadLazy(doc) {
   if (hash && element) element.scrollIntoView();
 
   await layout(doc);
-
-  loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`, updateCssLoaded);
 
   await populateValuesContent();
 
