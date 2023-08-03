@@ -11,7 +11,6 @@ sampleRUM('cwv');
  * @returns {Promise<void>}
  */
 async function checkAndSetTypography() {
-  const startTime = new Date();
   const htmlElement = document.querySelector('html');
   await calibrateMenuForPlayer(htmlElement);
   htmlElement.querySelector('.beverages-menu').style.backgroundColor = '#601014';
@@ -21,9 +20,6 @@ async function checkAndSetTypography() {
   htmlElement.style.overflow = 'hidden';
   // unhide the main element once menu is ready
   htmlElement.querySelector('main').style.opacity = '1';
-  const endTime = new Date();
-  // eslint-disable-next-line no-console
-  console.log(`Player Menu calibration time: ${endTime - startTime}ms`);
 }
 
 await checkAndSetTypography();

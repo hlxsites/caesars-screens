@@ -122,7 +122,6 @@ async function loadLazy(doc) {
 }
 
 export async function configureForWeb() {
-  const startTime = new Date();
   const htmlElement = document.querySelector('html');
   htmlElement.querySelector('.beverages-menu').style.backgroundColor = '#601014';
   htmlElement.querySelector('.food-menu').style.backgroundColor = '#000';
@@ -130,9 +129,6 @@ export async function configureForWeb() {
   await calibrateMenuForWeb(htmlElement);
   htmlElement.querySelector('.spinner').style.display = 'none';
   document.querySelector('main').style.opacity = '1';
-  const endTime = new Date();
-  // eslint-disable-next-line no-console
-  console.log(`Web Menu calibration time: ${endTime - startTime}ms`);
 }
 
 /**
