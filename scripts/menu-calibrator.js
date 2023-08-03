@@ -54,10 +54,10 @@ export async function calibrateMenuForPlayer(htmlElement) {
 }
 
 export async function calibrateMenuForWeb(htmlElement) {
-  // while (!cssLoaded || !posDataLoaded) {
-  //   // eslint-disable-next-line no-await-in-loop
-  //   await delayTimer(5);
-  // }
+  while (!cssLoaded || !posDataLoaded) {
+    // eslint-disable-next-line no-await-in-loop
+    await delayTimer(5);
+  }
   // calibration required for landscape only since scrolling is expected in portrait
   if (window.innerWidth / window.innerHeight <= 1) {
     return;
