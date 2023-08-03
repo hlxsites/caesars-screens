@@ -1,5 +1,3 @@
-import { isScreensPlayer } from './util.js';
-
 const MENU_CAFE_FONT_SIZE_CACHE_KEY = 'menu-cafe-fontSize';
 
 let cssLoaded = false;
@@ -27,7 +25,6 @@ export async function calibrateMenu(htmlElement, fontsizeFactor, delayTime = 0) 
     fontSize += fontsizeFactor;
     htmlElement.style.fontSize = `${fontSize}%`;
     const currentOffset = getOffset(htmlElement);
-    console.log(currentOffset);
     // Keep increasing fontsize if the offset between window and html element is decreasing,
     // break the loop if it increases
     if (prevOffset !== -1 && currentOffset >= prevOffset && prevOffset < 50) {

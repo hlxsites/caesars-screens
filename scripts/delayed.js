@@ -22,7 +22,8 @@ async function checkAndSetTypography() {
   // unhide the main element once menu is ready
   htmlElement.querySelector('main').style.opacity = '1';
   const endTime = new Date();
-  console.log(`Menu calibration time: ${endTime - startTime}ms`);
+  // eslint-disable-next-line no-console
+  console.log(`Player Menu calibration time: ${endTime - startTime}ms`);
 }
 
 await checkAndSetTypography();

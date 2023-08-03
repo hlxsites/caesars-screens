@@ -1,5 +1,3 @@
-import { isScreensPlayer } from '../../scripts/util.js';
-
 /**
  * Relocate Spinner HTML element at the body so that main
  * content can be hidden (opacity:0) until calibration is in process

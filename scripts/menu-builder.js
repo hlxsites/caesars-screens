@@ -6,7 +6,6 @@ import { isMenuPageRendering } from './util.js';
  * @returns {Promise<void>}
  */
 export const layout = async function createMenusHtmlLayout(rootDocument) {
-
   if (!isMenuPageRendering()) {
     return;
   }
