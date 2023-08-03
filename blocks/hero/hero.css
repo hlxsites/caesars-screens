@@ -1,0 +1,39 @@
+/* block specific CSS goes here */
+
+html {
+  background: black;
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+main .hero-container {
+  padding: 0;
+  width: 100vw;
+  max-height: 38vh;
+  margin-top: 6vh;
+}
+
+main .hero-container div {
+  all: unset;
+}
+
+main .hero img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 38vw;
+  max-height: 33vh;
+}
+
+@media (orientation: portrait) {
+  main .hero img {
+    max-width: 55vw;
+    max-height: 33vh;
+  }
+}

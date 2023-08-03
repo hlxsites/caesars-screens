@@ -11,7 +11,9 @@ import {
   loadCSS,
 } from './lib-franklin.js';
 
-import isScreensPlayer from './util.js';
+import { isScreensPlayer, isMenuPageRendering, isViewMenuPageRendering } from './util.js';
+
+import { calibrateMenuForWeb, updateCssLoaded } from './menu-calibrator.js';
 
 import { layout, nestedTable } from './menu-builder.js';
 
@@ -100,19 +102,17 @@ export function addFavIcon(href) {
  * loads everything that doesn't need to be delayed.
  */
 async function loadLazy(doc) {
-  await nestedTable(doc);
-
+  loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`, updateCssLoaded);
   const main = doc.querySelector('main');
   await loadBlocks(main);
+
+  await nestedTable(doc);
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
 
   await layout(doc);
-
-  loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
-  addFavIcon(`${window.hlx.codeBasePath}/styles/favicon.ico`);
 
   await populateValuesContent();
 
@@ -121,14 +121,17 @@ async function loadLazy(doc) {
   sampleRUM.observe(main.querySelectorAll('picture > img'));
 }
 
-export function configureForWeb() {
+export async function configureForWeb() {
+  const startTime = new Date();
   const htmlElement = document.querySelector('html');
   htmlElement.querySelector('.beverages-menu').style.backgroundColor = '#601014';
   htmlElement.querySelector('.food-menu').style.backgroundColor = '#000';
-  htmlElement.querySelector('.spinner-container').style.display = 'none';
   htmlElement.style.backgroundColor = 'black';
-  // unhide the main element once menu is ready
-  htmlElement.querySelector('main').style.opacity = '1';
+  await calibrateMenuForWeb(htmlElement);
+  htmlElement.querySelector('.spinner').style.display = 'none';
+  document.querySelector('main').style.opacity = '1';
+  const endTime = new Date();
+  console.log(`Menu calibration time: ${endTime - startTime}ms`);
 }
 
 /**
@@ -140,13 +143,29 @@ function loadDelayed() {
   window.setTimeout(() => import('./delayed.js'), 0);
 }
 
-async function loadPage() {
-  await loadEager(document);
-  await loadLazy(document);
+function renderViewMenuPage() {
+  document.querySelector('html').style.background = 'black';
+  loadCSS(`${window.hlx.codeBasePath}/styles/button-styles.css`, () => {
+    document.querySelector('main').style.opacity = 1;
+  });
+}
+
+async function renderMenuPage() {
   if (isScreensPlayer()) {
     loadDelayed();
   } else {
-    configureForWeb();
+    await configureForWeb();
+  }
+}
+
+async function loadPage() {
+  if (isViewMenuPageRendering()) {
+    renderViewMenuPage();
+  }
+  await loadEager(document);
+  await loadLazy(document);
+  if (isMenuPageRendering()) {
+    await renderMenuPage();
   }
 }
 

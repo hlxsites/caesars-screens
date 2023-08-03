@@ -1,17 +1,4 @@
-/* stylelint-disable no-descending-specificity */
-
 /* below the fold CSS goes here */
-
-@import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800|Open+Sans:400,600,700|Oswald:600&display=swap");
-
-/* Josefin Sans Fonts */
-@font-face {
-    font-family: "Josefin Sans";
-    src: url("../styles/fonts/JosefinSans/JosefinSans-Bold.woff2") format("woff2"), url("../styles/fonts/JosefinSans/JosefinSans-Bold.woff") format("woff");
-    font-weight:700;
-    font-style:normal;
-    font-display: swap;
-}
 
 * {
     padding: 0;
@@ -31,7 +18,6 @@
 
 .section.beverages-heading {
     writing-mode: vertical-rl;
-    text-orientation: revert;
     font-size: 5rem;
     font-weight: lighter;
     padding: 0;
