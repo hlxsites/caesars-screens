@@ -2,15 +2,16 @@
 
 /* container */
 .spinner {
-    position: absolute;
-    top: 50%;
-    right: 50%;
+    position: fixed;
+    top: 48vh;
+    right: 48vw;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
     transform: translate(50%, -50%);
-    font-size: 4rem;
+    font-family: sans-serif;
+    font-size: 5vmin;
 }
 
 .spinner-letter {

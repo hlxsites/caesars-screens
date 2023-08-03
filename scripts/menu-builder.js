@@ -1,9 +1,14 @@
+import { isMenuPageRendering } from './util.js';
+
 /**
  * this method generates the HTML structure of the Menu layout
  * @param rootDocument
  * @returns {Promise<void>}
  */
 export const layout = async function createMenusHtmlLayout(rootDocument) {
+  if (!isMenuPageRendering()) {
+    return;
+  }
   const beveragesFirstSectionSelector = '.section.beverages-heading';
   const beveragesFirstSectionElement = rootDocument.querySelector(
     beveragesFirstSectionSelector,
