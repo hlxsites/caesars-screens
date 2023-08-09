@@ -32,6 +32,7 @@
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 1fr auto;
+    grid-gap: 0;
     padding: 0;
 }
 
@@ -297,4 +298,19 @@
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 8rem;
+}
+
+.coffee-table > div {
+  display: flex;
+  align-items: center;
+  flex-direction: unset;
+}
+
+.coffee-table > div > div {
+  flex: 1;
+  text-align: center;
+}
+
+.coffee-table > div > div:first-of-type {
+  text-align: left;
 }

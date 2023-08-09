@@ -25,6 +25,7 @@ export async function calibrateMenu(htmlElement, fontsizeFactor, delayTime = 0) 
     fontSize += fontsizeFactor;
     htmlElement.style.fontSize = `${fontSize}%`;
     const currentOffset = getOffset(htmlElement);
+    console.log(currentOffset);
     // Keep increasing fontsize if the offset between window and html element is decreasing,
     // break the loop if it increases
     if (prevOffset !== -1 && currentOffset >= prevOffset && prevOffset < 50) {
@@ -47,7 +48,7 @@ export async function calibrateMenuForPlayer(htmlElement) {
     // eslint-disable-next-line no-await-in-loop
     await delayTimer(5);
   }
-  await calibrateMenu(htmlElement, 0.75, 15);
+  await calibrateMenu(htmlElement, 0.5, 15);
 }
 
 export async function calibrateMenuForWeb(htmlElement) {
