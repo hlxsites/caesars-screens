@@ -79,9 +79,6 @@ export const nestedTable = async function createAlcoholBevarageNestedTable(
   const coffeeTable = beverageContentDocumentRoot.querySelector(
     `${rootSelector} > div:nth-last-child(-n + 5)`,
   );
-  const alcoholicBeverageTableHeading = beverageContentDocumentRoot.querySelector(
-    `${rootSelector} > div:nth-last-child(-n + 4)`,
-  );
   const wineTable = beverageContentDocumentRoot.querySelector(
     `${rootSelector} > div:nth-last-child(-n + 3)`,
   );
@@ -118,7 +115,6 @@ export const nestedTable = async function createAlcoholBevarageNestedTable(
   wineChampagneNestedTableDiv.appendChild(wineTable);
   wineChampagneNestedTableDiv.appendChild(champagneTable);
 
-  alcoholBeverageNestedTableDiv.appendChild(alcoholicBeverageTableHeading);
   alcoholBeverageNestedTableDiv.appendChild(wineChampagneNestedTableDiv);
   alcoholBeverageNestedTableDiv.appendChild(beerTable);
 };

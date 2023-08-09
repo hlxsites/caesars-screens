@@ -2,6 +2,24 @@ import { updatePosDataLoaded } from './menu-calibrator.js';
 import { isMenuPageRendering } from './util.js';
 
 const POS_ENDPOINT = '/screens/menus/pos-data.json';
+const COFFEE_HEADING = 'COFFEE';
+const SINGLE_COFFEE = 'SINGLE';
+const DOUBLE_COFFEE = 'DOUBLE';
+const MEDIUM_COFFEE = 'MEDIUM';
+const LARGE_COFFEE = 'LARGE';
+const SIXTEEN_OZ = '16 oz';
+const TWENTY_OZ = '20 oz';
+const AMERICANO = 'americano';
+
+const ALCOHOLIC_BEVERAGES_HEADING = 'ALCOHOLIC BEVERAGES';
+const WINE_HEADING = 'Wine';
+const CHAMPAGNE_HEADING = 'Champagne';
+const BEER_HEADING = 'Beer';
+
+const SWEETS = 'SWEETS';
+const BRIOCHE = 'BRIOCHE';
+const SAVORY = 'SAVORY';
+const SIDES = 'SIDES';
 
 export const startsWithTemplateLiteral = '{{';
 export const endsWithTemplateLiteral = '}}';
@@ -27,79 +45,175 @@ export function getKey(keyLabel) {
   return keyLabel;
 }
 
-/**
- * This method will replace the placeholders (i.e.variables) with respective prices
- * and unhide the Menu item
- * @param elements
- * @param beveragesCoffeeEntries
- */
-function updateMenuItem(SKU, targetElement, targetPrice, isOutOfStock) {
-  if (
-    isOutOfStock.trim().toLowerCase() === 'true'
-    || isOutOfStock.trim().toLowerCase() === 'yes'
-  ) {
-    targetElement.parentElement.style.display = 'none'; // already set
+function categoriseItems(menuData) {
+  const itemsMap = {};
+  let category;
+  menuData.forEach((menuItem) => {
+    const productName = menuItem.Product_Name || '';
+    const variant1Price = menuItem.Variant1_price || '';
+    const variant2Price = menuItem.Variant2_price || '';
+    const { isOutOfStock = '' } = menuItem;
+    const { isCategory = '' } = menuItem;
+    if (isCategory.toLowerCase() === 'yes') {
+      category = productName.toLowerCase();
+      itemsMap[category] = {
+        price: variant1Price,
+        data: [],
+      };
+    } else if (category && isOutOfStock.toLowerCase() !== 'true') {
+      itemsMap[category].data.push({
+        productName,
+        variant1Price,
+        variant2Price,
+      });
+    }
+  });
+  return itemsMap;
+}
+
+function addMenuItemRow(root, itemsArray = []) {
+  const parentDiv = document.createElement('div');
+  itemsArray.forEach((item) => {
+    if (item !== undefined) {
+      const childDiv = document.createElement('div');
+      childDiv.innerHTML = item;
+      parentDiv.appendChild(childDiv);
+    }
+  });
+  root.appendChild(parentDiv);
+}
+
+function addAmericanoCoffeeItem(coffeeTableDiv, coffeeItems) {
+  let index;
+  const americanoCoffeeItem = coffeeItems.find((item, i) => {
+    if (item.productName.toLowerCase() === AMERICANO) {
+      index = i;
+      return true;
+    }
+    return false;
+  });
+  if (!americanoCoffeeItem) {
     return;
   }
+  addMenuItemRow(coffeeTableDiv, [americanoCoffeeItem.productName,
+    americanoCoffeeItem.variant1Price, americanoCoffeeItem.variant2Price]);
+  coffeeItems.splice(index, 1);
+}
 
-  targetElement.textContent = targetElement.textContent.replace(
-    startsWithTemplateLiteral + SKU + endsWithTemplateLiteral,
-    targetPrice,
-  );
-  targetElement.style.display = ''; // unhide the element after setting the price
+function checkAndUpdatePlaceholders(item) {
+  if (item.productName && item.productName.includes('+')
+      && (item.variant1Price || item.variant2Price)) {
+    const price = item.variant1Price ? item.variant1Price : item.variant2Price;
+    item.productName = item.productName.replace('+', `+${price}`);
+    item.variant1Price = undefined;
+    item.variant2Price = undefined;
+  }
+  if (item.productName && /\n/.exec(item.productName)) {
+    const breakLine = document.createElement('br');
+    item.productName = item.productName.replace('\n', breakLine.outerHTML);
+    item.variant1Price = undefined;
+  }
+}
+
+function updateMenuCoffeeItems(beveragesItemsMap) {
+  const coffeeItems = beveragesItemsMap.coffee || { data: [] };
+  const coffeeItemsWrapper = document.querySelector('.coffee-table');
+  if (!coffeeItemsWrapper || coffeeItems.data.length === 0) {
+    return;
+  }
+  const coffeeHeading = document.createElement('h3');
+  coffeeHeading.innerText = COFFEE_HEADING;
+  addMenuItemRow(coffeeItemsWrapper, [coffeeHeading.outerHTML, SINGLE_COFFEE, DOUBLE_COFFEE]);
+  addAmericanoCoffeeItem(coffeeItemsWrapper, coffeeItems.data);
+  addMenuItemRow(coffeeItemsWrapper, ['', MEDIUM_COFFEE, LARGE_COFFEE]);
+  addMenuItemRow(coffeeItemsWrapper, ['', SIXTEEN_OZ, TWENTY_OZ]);
+  coffeeItems.data.forEach((item) => {
+    checkAndUpdatePlaceholders(item);
+    addMenuItemRow(coffeeItemsWrapper, [item.productName, item.variant1Price, item.variant2Price]);
+  });
+}
+
+function updateAlchoholCategoryItem(categoryClass, category, beveragesItemsMap) {
+  if (!categoryClass || !category || !beveragesItemsMap[category.toLowerCase()]
+        || beveragesItemsMap[category.toLowerCase()].data.length === 0) {
+    return;
+  }
+  const categoryTable = document.querySelector(categoryClass);
+  if (!categoryTable) {
+    return;
+  }
+  addMenuItemRow(categoryTable, [category, '']);
+  const categoryItems = beveragesItemsMap[category.toLowerCase()].data;
+  categoryItems.forEach((item) => {
+    addMenuItemRow(categoryTable, [item.productName, item.variant1Price]);
+  });
+}
+
+function updateMenuAlcoholItems(beveragesItemsMap) {
+  const alcoholWrapper = document.querySelector('.alcohol-beverages-table');
+  if (!alcoholWrapper) {
+    return;
+  }
+  const alcholicBeveragesHeadingWrapper = document.createElement('div');
+  alcholicBeveragesHeadingWrapper.classList.add('default-content-wrapper');
+  const alcholicBeveragesHeading = document.createElement('h3');
+  alcholicBeveragesHeading.innerText = ALCOHOLIC_BEVERAGES_HEADING;
+  alcholicBeveragesHeadingWrapper.appendChild(alcholicBeveragesHeading);
+  alcoholWrapper.insertBefore(alcholicBeveragesHeadingWrapper, alcoholWrapper.firstChild);
+
+  updateAlchoholCategoryItem('.wine-table', WINE_HEADING, beveragesItemsMap);
+  updateAlchoholCategoryItem('.champagne-table', CHAMPAGNE_HEADING, beveragesItemsMap);
+  updateAlchoholCategoryItem('.beer-table', BEER_HEADING, beveragesItemsMap);
+}
+
+function updateFoodMenuItems(categoryClass, category, foodItemsMap, rowItemCount) {
+  const categoryItems = foodItemsMap[category.toLowerCase()];
+  const categoryTable = document.querySelector(categoryClass);
+  if (!categoryTable || !categoryItems || categoryItems.data.length === 0) {
+    return;
+  }
+  const categoryHeading = document.createElement('h3');
+  categoryHeading.innerText = category;
+  addMenuItemRow(categoryTable, [categoryHeading.outerHTML, categoryItems.price]);
+
+  if (rowItemCount === 4) {
+    for (let index = 0; index < categoryItems.data.length; index += 2) {
+      if (index + 1 < categoryItems.data.length) {
+        addMenuItemRow(categoryTable, [
+          categoryItems.data[index].productName,
+          categoryItems.data[index].variant1Price,
+          categoryItems.data[index + 1].productName,
+          categoryItems.data[index + 1].variant1Price,
+        ]);
+      } else {
+        addMenuItemRow(categoryTable, [
+          categoryItems.data[index].productName,
+          categoryItems.data[index].variant1Price,
+          '',
+          '',
+        ]);
+      }
+    }
+  } else {
+    // default row item count is 2
+    categoryItems.data.forEach((item) => {
+      addMenuItemRow(categoryTable, [item.productName, item.variant1Price]);
+    });
+  }
 }
 
 function processBeveragesFoodMenuSections(menuJsonPayload) {
-  // Access the "Beverages" category's data
-  const beveragesData = menuJsonPayload.Beverages.data;
-
   // Loop through the Beverages Menu section data to access individual product details
-  beveragesData.forEach((menuItem) => {
-    const variant1Price = menuItem.Variant1_price;
-    const variant2Price = menuItem.Variant2_price;
-    const sku = menuItem.SKU;
-    const { isOutOfStock } = menuItem;
-    if (placeholderMap.has(`{{${sku}}}`)) {
-      updateMenuItem(
-        sku,
-        placeholderMap.get(`{{${sku}}}`),
-        variant1Price,
-        isOutOfStock,
-      );
-    }
-    if (placeholderMap.has(`{{${sku}}}:variant1-price`)) {
-      updateMenuItem(
-        sku,
-        placeholderMap.get(`{{${sku}}}:variant1-price`),
-        variant1Price,
-        isOutOfStock,
-      );
-    }
-    if (placeholderMap.has(`{{${sku}}}:variant2-price`)) {
-      updateMenuItem(
-        sku,
-        placeholderMap.get(`{{${sku}}}:variant2-price`),
-        variant2Price,
-        isOutOfStock,
-      );
-    }
-  });
-
-  // Access the "Food" category's data
-  const foodData = menuJsonPayload.Food.data;
+  const beveragesItemsMap = categoriseItems(menuJsonPayload.Beverages.data) || {};
+  updateMenuCoffeeItems(beveragesItemsMap);
+  updateMenuAlcoholItems(beveragesItemsMap);
 
   // Loop through the Food Menu Section data to access individual product details
-  foodData.forEach((product) => {
-    const variant1Price = product.Variant1_price;
-    const sku = product.SKU;
-    const { isOutOfStock } = product;
-
-    const targetElement = placeholderMap.get(`{{${sku}}}`);
-
-    if (targetElement) {
-      updateMenuItem(sku, targetElement, variant1Price, isOutOfStock);
-    }
-  });
+  const foodItemsMap = categoriseItems(menuJsonPayload.Food.data) || {};
+  updateFoodMenuItems('.sweets-table', SWEETS, foodItemsMap);
+  updateFoodMenuItems('.brioche-savory-table', BRIOCHE, foodItemsMap);
+  updateFoodMenuItems('.brioche-savory-table', SAVORY, foodItemsMap);
+  updateFoodMenuItems('.sides-table', SIDES, foodItemsMap, 4);
 }
 
 /**

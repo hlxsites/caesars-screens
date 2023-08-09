@@ -47,7 +47,7 @@ export async function calibrateMenuForPlayer(htmlElement) {
     // eslint-disable-next-line no-await-in-loop
     await delayTimer(5);
   }
-  await calibrateMenu(htmlElement, 0.75, 15);
+  await calibrateMenu(htmlElement, 0.5, 15);
 }
 
 export async function calibrateMenuForWeb(htmlElement) {
