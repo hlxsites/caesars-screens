@@ -9,31 +9,31 @@
     ],
     "defaultProvider": "franklin"
   },
-  "timestamp": 1691579022330,
+  "timestamp": 1691579337848,
   "entries": [
     {
       "path": "/screens/menus/cafe",
-      "timestamp": 1691579010000
+      "timestamp": 1691579032000
     },
     {
       "path": "/scripts/menu-builder.js",
-      "timestamp": 1691579004000
+      "timestamp": 1691579028000
     },
     {
       "path": "/scripts/menu-content-parser.js",
-      "timestamp": 1691579005000
+      "timestamp": 1691579028000
     },
     {
       "path": "/scripts/lib-franklin.js",
-      "timestamp": 1691579004000
+      "timestamp": 1691579028000
     },
     {
       "path": "/scripts/scripts.js",
-      "timestamp": 1691579005000
+      "timestamp": 1691579029000
     },
     {
       "path": "/styles/styles.css",
-      "timestamp": 1691579005000
+      "timestamp": 1691579029000
     },
     {
       "path": "/screens/menus/pos-data.json",
@@ -41,7 +41,7 @@
     },
     {
       "path": "/scripts/delayed.js",
-      "timestamp": 1691579004000
+      "timestamp": 1691579028000
     },
     {
       "path": "/blocks/columns/columns.css",
@@ -53,31 +53,31 @@
     },
     {
       "path": "/styles/lazy-styles.css",
-      "timestamp": 1691579005000
+      "timestamp": 1691579029000
     },
     {
       "path": "/blocks/table/table.css",
-      "timestamp": 1691579004000
+      "timestamp": 1691579028000
     },
     {
       "path": "/blocks/table/table.js",
-      "timestamp": 1691579004000
+      "timestamp": 1691579028000
     },
     {
       "path": "/blocks/multiple-variant-table/multiple-variant-table.css",
-      "timestamp": 1691579003000
+      "timestamp": 1691579027000
     },
     {
       "path": "/blocks/multiple-variant-table/multiple-variant-table.js",
-      "timestamp": 1691579003000
+      "timestamp": 1691579027000
     },
     {
       "path": "/blocks/spinner/spinner.css",
-      "timestamp": 1691579004000
+      "timestamp": 1691579027000
     },
     {
       "path": "/blocks/spinner/spinner.js",
-      "timestamp": 1691579004000
+      "timestamp": 1691579028000
     }
   ]
 }
