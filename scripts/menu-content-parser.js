@@ -1,7 +1,7 @@
 import { updatePosDataLoaded } from './menu-calibrator.js';
 import { isMenuPageRendering } from './util.js';
 
-const POS_ENDPOINT = '/screens/menus/pos-data1.json';
+const POS_ENDPOINT = '/screens/menus/pos-data.json';
 const COFFEE_HEADING = 'COFFEE';
 const SINGLE_COFFEE = 'SINGLE';
 const DOUBLE_COFFEE = 'DOUBLE';
