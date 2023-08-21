@@ -15,9 +15,9 @@ import { isScreensPlayer, isMenuPageRendering, isViewMenuPageRendering } from '.
 
 import { calibrateMenuForWeb, updateCssLoaded } from './menu-calibrator.js';
 
-import { layout, nestedTable } from './menu-builder.js';
+import { layout, nestedTable, buildMenuStructure } from './menu-builder.js';
 
-import { populateValuesContent } from './menu-content-parser.js';
+import populateValuesContent from './menu-content-parser.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 window.hlx.RUM_GENERATION = 'project-1'; // add your RUM generation information here
@@ -102,8 +102,9 @@ export function addFavIcon(href) {
  * loads everything that doesn't need to be delayed.
  */
 async function loadLazy(doc) {
-  loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`, updateCssLoaded);
   const main = doc.querySelector('main');
+  buildMenuStructure(main);
+  loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`, updateCssLoaded);
   await loadBlocks(main);
 
   await nestedTable(doc);

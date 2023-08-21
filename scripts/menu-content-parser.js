@@ -1,7 +1,7 @@
 import { updatePosDataLoaded } from './menu-calibrator.js';
 import { isMenuPageRendering } from './util.js';
 
-const POS_ENDPOINT = '/screens/menus/pos-data.json';
+const POS_ENDPOINT = '/screens/menus/menu-data.json';
 const COFFEE_HEADING = 'COFFEE';
 const SINGLE_COFFEE = 'SINGLE';
 const DOUBLE_COFFEE = 'DOUBLE';
@@ -21,29 +21,10 @@ const BRIOCHE = 'BRIOCHE';
 const SAVORY = 'SAVORY';
 const SIDES = 'SIDES';
 
-export const startsWithTemplateLiteral = '{{';
-export const endsWithTemplateLiteral = '}}';
-
-export const placeholderMap = new Map();
-
-export function getKey(keyLabel) {
-  if (
-    keyLabel.startsWith(startsWithTemplateLiteral)
-    && keyLabel.endsWith(endsWithTemplateLiteral)
-  ) {
-    return keyLabel;
-  }
-  if (
-    keyLabel.includes(startsWithTemplateLiteral)
-    && keyLabel.includes(endsWithTemplateLiteral)
-  ) {
-    return keyLabel.substring(
-      keyLabel.indexOf(startsWithTemplateLiteral),
-      keyLabel.indexOf(endsWithTemplateLiteral) + 2,
-    );
-  }
-  return keyLabel;
-}
+const FRENCH_BAGUETTE = 'french baguette';
+const HAM_AND_GRUYERE = 'ham gruyère';
+const TURKEY_AND_SWISS = 'turkey and swiss';
+const VEGETARIAN = 'vegetarian';
 
 function categoriseItems(menuData) {
   const itemsMap = {};
@@ -71,12 +52,23 @@ function categoriseItems(menuData) {
   return itemsMap;
 }
 
+function addClassForSpecialItems(element, root) {
+  if (root && root.lastChild && root.lastChild.innerText
+      && root.lastChild.innerText.toLowerCase().includes(FRENCH_BAGUETTE)
+      && (element.innerText.toLowerCase().includes(HAM_AND_GRUYERE)
+      || element.innerText.toLowerCase().includes(VEGETARIAN)
+      || element.innerText.toLowerCase().includes(TURKEY_AND_SWISS))) {
+    element.id = 'french-baguette-items';
+  }
+}
+
 function addMenuItemRow(root, itemsArray = []) {
   const parentDiv = document.createElement('div');
   itemsArray.forEach((item) => {
     if (item !== undefined) {
       const childDiv = document.createElement('div');
       childDiv.innerHTML = item;
+      addClassForSpecialItems(childDiv, root);
       parentDiv.appendChild(childDiv);
     }
   });
@@ -133,7 +125,7 @@ function updateMenuCoffeeItems(beveragesItemsMap) {
   });
 }
 
-function updateAlchoholCategoryItem(categoryClass, category, beveragesItemsMap) {
+function updateAlcoholCategoryItem(categoryClass, category, beveragesItemsMap) {
   if (!categoryClass || !category || !beveragesItemsMap[category.toLowerCase()]
         || beveragesItemsMap[category.toLowerCase()].data.length === 0) {
     return;
@@ -154,16 +146,16 @@ function updateMenuAlcoholItems(beveragesItemsMap) {
   if (!alcoholWrapper) {
     return;
   }
-  const alcholicBeveragesHeadingWrapper = document.createElement('div');
-  alcholicBeveragesHeadingWrapper.classList.add('default-content-wrapper');
+  const alcoholicBeveragesHeadingWrapper = document.createElement('div');
+  alcoholicBeveragesHeadingWrapper.classList.add('default-content-wrapper');
   const alcholicBeveragesHeading = document.createElement('h3');
   alcholicBeveragesHeading.innerText = ALCOHOLIC_BEVERAGES_HEADING;
-  alcholicBeveragesHeadingWrapper.appendChild(alcholicBeveragesHeading);
-  alcoholWrapper.insertBefore(alcholicBeveragesHeadingWrapper, alcoholWrapper.firstChild);
+  alcoholicBeveragesHeadingWrapper.appendChild(alcholicBeveragesHeading);
+  alcoholWrapper.insertBefore(alcoholicBeveragesHeadingWrapper, alcoholWrapper.firstChild);
 
-  updateAlchoholCategoryItem('.wine-table', WINE_HEADING, beveragesItemsMap);
-  updateAlchoholCategoryItem('.champagne-table', CHAMPAGNE_HEADING, beveragesItemsMap);
-  updateAlchoholCategoryItem('.beer-table', BEER_HEADING, beveragesItemsMap);
+  updateAlcoholCategoryItem('.wine-table', WINE_HEADING, beveragesItemsMap);
+  updateAlcoholCategoryItem('.champagne-table', CHAMPAGNE_HEADING, beveragesItemsMap);
+  updateAlcoholCategoryItem('.beer-table', BEER_HEADING, beveragesItemsMap);
 }
 
 function updateFoodMenuItems(categoryClass, category, foodItemsMap, rowItemCount) {
@@ -221,7 +213,7 @@ function processBeveragesFoodMenuSections(menuJsonPayload) {
  * @param elements
  * @returns {Promise<void>}
  */
-export async function populateValuesContent() {
+export default async function populateValuesContent() {
   if (!isMenuPageRendering()) {
     return;
   }
