@@ -9,19 +9,19 @@
     ],
     "defaultProvider": "franklin"
   },
-  "timestamp": 1692595050308,
+  "timestamp": 1692622419760,
   "entries": [
     {
       "path": "/screens/menus/cafe",
-      "timestamp": 1691588222000
+      "timestamp": 1692622273000
     },
     {
       "path": "/scripts/menu-builder.js",
-      "timestamp": 1691587971000
+      "timestamp": 1692622213000
     },
     {
       "path": "/scripts/menu-content-parser.js",
-      "timestamp": 1691587971000
+      "timestamp": 1692622213000
     },
     {
       "path": "/scripts/lib-franklin.js",
@@ -29,11 +29,11 @@
     },
     {
       "path": "/scripts/scripts.js",
-      "timestamp": 1691579029000
+      "timestamp": 1692622213000
     },
     {
       "path": "/styles/styles.css",
-      "timestamp": 1691579029000
+      "timestamp": 1692622213000
     },
     {
       "path": "/screens/menus/pos-data.json",
@@ -53,7 +53,7 @@
     },
     {
       "path": "/styles/lazy-styles.css",
-      "timestamp": 1691587971000
+      "timestamp": 1692622213000
     },
     {
       "path": "/blocks/table/table.css",
