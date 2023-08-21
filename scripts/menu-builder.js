@@ -118,3 +118,104 @@ export const nestedTable = async function createAlcoholBevarageNestedTable(
   alcoholBeverageNestedTableDiv.appendChild(wineChampagneNestedTableDiv);
   alcoholBeverageNestedTableDiv.appendChild(beerTable);
 };
+
+// Function to create a table
+function createTable(tableClass) {
+  const tableWrapper = document.createElement('div');
+  tableWrapper.classList.add('table-wrapper');
+  const table = document.createElement('div');
+  table.classList.add('table', tableClass, 'block');
+  table.setAttribute('data-block-name', 'table');
+  table.setAttribute('data-block-status', 'initialized');
+  tableWrapper.appendChild(table);
+  return tableWrapper;
+}
+
+export function buildMenuStructure(main) {
+  if (!isMenuPageRendering()) {
+    return;
+  }
+  // Section 1: beverages-heading
+  const section1 = document.createElement('div');
+  section1.classList.add('section', 'beverages-heading');
+  section1.setAttribute('data-section-status', 'initialized');
+  const beveragesHeadingWrapper = document.createElement('div');
+  beveragesHeadingWrapper.classList.add('default-content-wrapper');
+  const beveragesHeading = document.createElement('p');
+  beveragesHeading.textContent = 'BEVERAGES';
+  beveragesHeadingWrapper.appendChild(beveragesHeading);
+  section1.appendChild(beveragesHeadingWrapper);
+  main.appendChild(section1);
+
+  // Section 2: beverages-content
+  const section2 = document.createElement('div');
+  section2.classList.add('section', 'beverages-content', 'table-container');
+  section2.setAttribute('data-section-status', 'initialized');
+
+  // Coffee table
+  const coffeeTable = createTable('coffee-table');
+  section2.appendChild(coffeeTable);
+
+  // Wine table
+  const wineTable = createTable('wine-table');
+  section2.appendChild(wineTable);
+
+  // Champagne table
+  const champagneTable = createTable('champagne-table');
+  section2.appendChild(champagneTable);
+
+  // Beer table
+  const beerTable = createTable('beer-table');
+  section2.appendChild(beerTable);
+
+  main.appendChild(section2);
+
+  // Section 3: sweets
+  const section3 = document.createElement('div');
+  section3.classList.add('section', 'sweets', 'table-container');
+  section3.setAttribute('data-section-status', 'initialized');
+  const sweetsTable = createTable('sweets-table');
+  section3.appendChild(sweetsTable);
+  main.appendChild(section3);
+
+  // Section 4: brioche-savory
+  const section4 = document.createElement('div');
+  section4.classList.add('section', 'brioche-savory', 'table-container');
+  section4.setAttribute('data-section-status', 'initialized');
+  const briocheSavoryTable = createTable('brioche-savory-table');
+  section4.appendChild(briocheSavoryTable);
+  main.appendChild(section4);
+
+  // Section 5: sides
+  const section5 = document.createElement('div');
+  section5.classList.add('section', 'sides', 'table-container');
+  section5.setAttribute('data-section-status', 'initialized');
+  const foodHeadingWrapper = document.createElement('div');
+  foodHeadingWrapper.classList.add('default-content-wrapper');
+  const foodHeadingParagraph = document.createElement('p');
+  foodHeadingParagraph.textContent = 'FOOD';
+  foodHeadingWrapper.appendChild(foodHeadingParagraph);
+  section5.appendChild(foodHeadingWrapper);
+
+  const sidesTable = createTable('sides-table');
+  section5.appendChild(sidesTable);
+  main.appendChild(section5);
+}
+
+export function buildSpinnerBlock(main) {
+  if (!isMenuPageRendering()) {
+    return;
+  }
+  // empty main before adding spinner block
+  main.innerHTML = '';
+  const spinnerSection = document.createElement('div');
+  spinnerSection.classList.add('spinner', 'calibrating');
+  const spinnerString = '.....';
+  [...spinnerString].forEach((letter) => {
+    const divElement = document.createElement('div');
+    divElement.classList.add('spinner-letter');
+    divElement.textContent = letter;
+    spinnerSection.appendChild(divElement);
+  });
+  main.parentElement.appendChild(spinnerSection);
+}
