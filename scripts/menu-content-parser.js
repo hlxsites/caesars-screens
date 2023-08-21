@@ -52,7 +52,7 @@ function categoriseItems(menuData) {
   return itemsMap;
 }
 
-function addClassForSpecialItems(element, root) {
+function handleSpecialItems(element, root) {
   if (root && root.lastChild && root.lastChild.innerText
       && root.lastChild.innerText.toLowerCase().includes(FRENCH_BAGUETTE)
       && (element.innerText.toLowerCase().includes(HAM_AND_GRUYERE)
@@ -68,7 +68,7 @@ function addMenuItemRow(root, itemsArray = []) {
     if (item !== undefined) {
       const childDiv = document.createElement('div');
       childDiv.innerHTML = item;
-      addClassForSpecialItems(childDiv, root);
+      handleSpecialItems(childDiv, root);
       parentDiv.appendChild(childDiv);
     }
   });
