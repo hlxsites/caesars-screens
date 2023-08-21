@@ -131,12 +131,10 @@ function createTable(tableClass) {
   return tableWrapper;
 }
 
-export function buildMenuStructure(mainElement) {
+export function buildMenuStructure(main) {
   if (!isMenuPageRendering()) {
     return;
   }
-  // empty main before creating structure
-  mainElement.innerHTML = '';
   // Section 1: beverages-heading
   const section1 = document.createElement('div');
   section1.classList.add('section', 'beverages-heading');
@@ -147,7 +145,7 @@ export function buildMenuStructure(mainElement) {
   beveragesHeading.textContent = 'BEVERAGES';
   beveragesHeadingWrapper.appendChild(beveragesHeading);
   section1.appendChild(beveragesHeadingWrapper);
-  mainElement.appendChild(section1);
+  main.appendChild(section1);
 
   // Section 2: beverages-content
   const section2 = document.createElement('div');
@@ -170,7 +168,7 @@ export function buildMenuStructure(mainElement) {
   const beerTable = createTable('beer-table');
   section2.appendChild(beerTable);
 
-  mainElement.appendChild(section2);
+  main.appendChild(section2);
 
   // Section 3: sweets
   const section3 = document.createElement('div');
@@ -178,7 +176,7 @@ export function buildMenuStructure(mainElement) {
   section3.setAttribute('data-section-status', 'initialized');
   const sweetsTable = createTable('sweets-table');
   section3.appendChild(sweetsTable);
-  mainElement.appendChild(section3);
+  main.appendChild(section3);
 
   // Section 4: brioche-savory
   const section4 = document.createElement('div');
@@ -186,7 +184,7 @@ export function buildMenuStructure(mainElement) {
   section4.setAttribute('data-section-status', 'initialized');
   const briocheSavoryTable = createTable('brioche-savory-table');
   section4.appendChild(briocheSavoryTable);
-  mainElement.appendChild(section4);
+  main.appendChild(section4);
 
   // Section 5: sides
   const section5 = document.createElement('div');
@@ -201,22 +199,23 @@ export function buildMenuStructure(mainElement) {
 
   const sidesTable = createTable('sides-table');
   section5.appendChild(sidesTable);
-  mainElement.appendChild(section5);
+  main.appendChild(section5);
+}
 
-  // Section 6: spinner
-  const section6 = document.createElement('div');
-  section6.classList.add('section', 'calibrating', 'spinner-container');
-  section6.setAttribute('data-section-status', 'initialized');
-  const spinnerWrapper = document.createElement('div');
-  spinnerWrapper.classList.add('spinner-wrapper');
-  const calibratingSpinner = document.createElement('div');
-  calibratingSpinner.classList.add('spinner', 'calibrating', 'block');
-  calibratingSpinner.setAttribute('data-block-name', 'spinner');
-  calibratingSpinner.setAttribute('data-block-status', 'initialized');
-  const spinnerContent = document.createElement('div');
-  spinnerContent.textContent = '...';
-  calibratingSpinner.appendChild(spinnerContent);
-  spinnerWrapper.appendChild(calibratingSpinner);
-  section6.appendChild(spinnerWrapper);
-  mainElement.appendChild(section6);
+export function buildSpinnerBlock(main) {
+  if (!isMenuPageRendering()) {
+    return;
+  }
+  // empty main before adding spinner block
+  main.innerHTML = '';
+  const spinnerSection = document.createElement('div');
+  spinnerSection.classList.add('spinner', 'calibrating');
+  const spinnerString = '.....';
+  [...spinnerString].forEach((letter) => {
+    const divElement = document.createElement('div');
+    divElement.classList.add('spinner-letter');
+    divElement.textContent = letter;
+    spinnerSection.appendChild(divElement);
+  });
+  main.parentElement.appendChild(spinnerSection);
 }

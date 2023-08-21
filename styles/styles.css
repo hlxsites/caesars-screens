@@ -334,72 +334,77 @@ html {
   }
 }
 
-/* @media (orientation: landscape) and (min-width: 900px) { */
+/* spinner css */
+.spinner {
+  position: fixed;
+  top: 48vh;
+  right: 49vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  transform: translate(50%, -50%);
+  font-family: sans-serif;
+  font-size: 5vmin;
+}
 
-/*  html { */
+.spinner-letter {
+  /* font-size: 88px; */
+  font-weight: normal;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  animation-name: bounce;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
 
-/*    font-size: 50%; */
+.spinner-letter:nth-child(2) {
+  animation-delay: .1s;
+}
 
-/*  } */
+.spinner-letter:nth-child(3) {
+  animation-delay: .2s;
+}
 
-/* } */
+.spinner-letter:nth-child(4) {
+  animation-delay: .3s;
+}
 
-/* @media (orientation: landscape) and (min-width: 1200px) { */
+.spinner-letter:nth-child(5) {
+  animation-delay: .4s;
+}
 
-/*  html { */
+.spinner-letter:nth-child(6) {
+  animation-delay: .5s;
+}
 
-/*    font-size: 65%; */
+.spinner-letter:nth-child(7) {
+  animation-delay: .6s;
+}
 
-/*  } */
+.spinner-letter:nth-child(8) {
+  animation-delay: .8s;
+}
 
-/* } */
+.spinner-letter:nth-child(9) {
+  animation-delay: 1s;
+}
 
-/* @media (orientation: landscape) and (min-width: 1500px) { */
+.spinner-letter:nth-child(10) {
+  animation-delay: 1.2s;
+}
 
-/*  html { */
+@keyframes bounce {
+  0% {
+    transform: translateY(0)
+  }
 
-/*    font-size: 80%; */
+  40% {
+    transform: translateY(-10px);
+  }
 
-/*  } */
-
-/* } */
-
-/* @media (orientation: landscape) and (min-width: 1800px) { */
-
-/*  html { */
-
-/*    font-size: 95%; */
-
-/*  } */
-
-/* } */
-
-/* @media (orientation: landscape) and (min-width: 2200px) { */
-
-/*  html { */
-
-/*    font-size: 115%; */
-
-/*  } */
-
-/* } */
-
-/* @media (orientation: landscape) and (min-width: 3000px) { */
-
-/*  html { */
-
-/*    font-size: 130%; */
-
-/*  } */
-
-/* } */
-
-/* @media (orientation: landscape) and (min-width: 3600px) { */
-
-/*  html { */
-
-/*    font-size: 198%; */
-
-/*  } */
-
-/* } */
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+}

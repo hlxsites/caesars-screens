@@ -15,7 +15,7 @@ import { isScreensPlayer, isMenuPageRendering, isViewMenuPageRendering } from '.
 
 import { calibrateMenuForWeb, updateCssLoaded } from './menu-calibrator.js';
 
-import { layout, nestedTable, buildMenuStructure } from './menu-builder.js';
+import { layout, nestedTable, buildMenuStructure, buildSpinnerBlock } from './menu-builder.js';
 
 import populateValuesContent from './menu-content-parser.js';
 
@@ -48,6 +48,7 @@ function buildHeroBlock(main) {
 function buildAutoBlocks(main) {
   try {
     buildHeroBlock(main);
+    buildSpinnerBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
