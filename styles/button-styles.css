@@ -1,6 +1,7 @@
 @font-face {
   font-family: "League Spartan";
   src: url("./fonts/LeagueSpartan/LeagueSpartan-Medium.ttf");
+  font-display: swap;
 }
 
 .section.view-menu-button *, .section.view-menu-button a {

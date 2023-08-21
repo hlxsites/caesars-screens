@@ -13,11 +13,13 @@
 @font-face {
   font-family: "Montserrat Extra Light";
   src: url('./fonts/Montserrat/Montserrat-ExtraLight.ttf');
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Montserrat Bold";
   src: url('./fonts/Montserrat/Montserrat-Bold.ttf');
+  font-display: swap;
 }
 
 :root {
