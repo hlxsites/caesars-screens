@@ -9,7 +9,7 @@
     ],
     "defaultProvider": "franklin"
   },
-  "timestamp": 1692782225101,
+  "timestamp": 1692782414884,
   "entries": [
     {
       "path": "/screens/menus/cafe",
@@ -45,7 +45,7 @@
     },
     {
       "path": "/screens/menus/menu-data.json",
-      "timestamp": 1692775002000
+      "timestamp": 1692782374000
     },
     {
       "path": "/scripts/delayed.js",
@@ -74,6 +74,14 @@
     {
       "path": "/blocks/table/table.js",
       "timestamp": 1692775168000
+    },
+    {
+      "path": "/styles/fonts/Montserrat/Montserrat-ExtraLight.ttf",
+      "timestamp": 1692775169000
+    },
+    {
+      "path": "/styles/fonts/Montserrat/Montserrat-Bold.ttf",
+      "timestamp": 1692775169000
     }
   ]
 }
