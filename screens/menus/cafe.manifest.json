@@ -9,47 +9,47 @@
     ],
     "defaultProvider": "franklin"
   },
-  "timestamp": 1692785513583,
+  "timestamp": 1692789114860,
   "entries": [
     {
       "path": "/screens/menus/cafe",
-      "timestamp": 1692785505000
+      "timestamp": 1692785642000
     },
     {
       "path": "/scripts/menu-builder.js",
-      "timestamp": 1692785503000
+      "timestamp": 1692785520000
     },
     {
       "path": "/scripts/menu-content-parser.js",
-      "timestamp": 1692785503000
+      "timestamp": 1692785520000
     },
     {
       "path": "/scripts/menu-calibrator.js",
-      "timestamp": 1692785503000
+      "timestamp": 1692785520000
     },
     {
       "path": "/scripts/util.js",
-      "timestamp": 1692785503000
+      "timestamp": 1692785520000
     },
     {
       "path": "/scripts/lib-franklin.js",
-      "timestamp": 1692785503000
+      "timestamp": 1692785519000
     },
     {
       "path": "/scripts/scripts.js",
-      "timestamp": 1692785503000
+      "timestamp": 1692785520000
     },
     {
       "path": "/styles/styles.css",
-      "timestamp": 1692785503000
+      "timestamp": 1692785520000
     },
     {
       "path": "/screens/menus/menu-data.json",
-      "timestamp": 1692785319000
+      "timestamp": 1692788960000
     },
     {
       "path": "/scripts/delayed.js",
-      "timestamp": 1692785502000
+      "timestamp": 1692785519000
     },
     {
       "path": "/blocks/columns/columns.css",
@@ -61,27 +61,27 @@
     },
     {
       "path": "/styles/lazy-styles.css",
-      "timestamp": 1692785503000
+      "timestamp": 1692785520000
     },
     {
       "path": "/styles/button-styles.css",
-      "timestamp": 1692785503000
+      "timestamp": 1692785520000
     },
     {
       "path": "/blocks/table/table.css",
-      "timestamp": 1692785502000
+      "timestamp": 1692785519000
     },
     {
       "path": "/blocks/table/table.js",
-      "timestamp": 1692785502000
+      "timestamp": 1692785519000
     },
     {
       "path": "/styles/fonts/Montserrat/Montserrat-ExtraLight.ttf",
-      "timestamp": 1692785503000
+      "timestamp": 1692785520000
     },
     {
       "path": "/styles/fonts/Montserrat/Montserrat-Bold.ttf",
-      "timestamp": 1692785503000
+      "timestamp": 1692785520000
     }
   ]
 }
