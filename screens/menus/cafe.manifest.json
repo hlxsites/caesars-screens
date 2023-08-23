@@ -9,39 +9,47 @@
     ],
     "defaultProvider": "franklin"
   },
-  "timestamp": 1692775162339,
+  "timestamp": 1692781111820,
   "entries": [
     {
       "path": "/screens/menus/cafe",
-      "timestamp": 1692622273000
+      "timestamp": 1692775172000
     },
     {
       "path": "/scripts/menu-builder.js",
-      "timestamp": 1692622213000
+      "timestamp": 1692775168000
     },
     {
       "path": "/scripts/menu-content-parser.js",
-      "timestamp": 1692622213000
+      "timestamp": 1692775168000
+    },
+    {
+      "path": "/scripts/menu-calibrator.js",
+      "timestamp": 1692775168000
+    },
+    {
+      "path": "/scripts/util.js",
+      "timestamp": 1692775168000
     },
     {
       "path": "/scripts/lib-franklin.js",
-      "timestamp": 1691579028000
+      "timestamp": 1692775168000
     },
     {
       "path": "/scripts/scripts.js",
-      "timestamp": 1692622213000
+      "timestamp": 1692775168000
     },
     {
       "path": "/styles/styles.css",
-      "timestamp": 1692622213000
+      "timestamp": 1692775169000
     },
     {
-      "path": "/screens/menus/pos-data.json",
-      "timestamp": 1691587361000
+      "path": "/screens/menus/menu-data.json",
+      "timestamp": 1692775002000
     },
     {
       "path": "/scripts/delayed.js",
-      "timestamp": 1691579028000
+      "timestamp": 1692775168000
     },
     {
       "path": "/blocks/columns/columns.css",
@@ -53,31 +61,19 @@
     },
     {
       "path": "/styles/lazy-styles.css",
-      "timestamp": 1692622213000
+      "timestamp": 1692775169000
+    },
+    {
+      "path": "/styles/button-styles.css",
+      "timestamp": 1692775169000
     },
     {
       "path": "/blocks/table/table.css",
-      "timestamp": 1691579028000
+      "timestamp": 1692775167000
     },
     {
       "path": "/blocks/table/table.js",
-      "timestamp": 1691587971000
-    },
-    {
-      "path": "/blocks/multiple-variant-table/multiple-variant-table.css",
-      "timestamp": 1691579027000
-    },
-    {
-      "path": "/blocks/multiple-variant-table/multiple-variant-table.js",
-      "timestamp": 1691579027000
-    },
-    {
-      "path": "/blocks/spinner/spinner.css",
-      "timestamp": 1691579027000
-    },
-    {
-      "path": "/blocks/spinner/spinner.js",
-      "timestamp": 1691579028000
+      "timestamp": 1692775168000
     }
   ]
 }
